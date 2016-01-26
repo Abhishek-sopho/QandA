@@ -1,4 +1,4 @@
-var span = document.getElementById("spanTextForm"),
+var span = document.getElementById("divFormChange"),
 	signIn = document.getElementsByClassName("divSignIn")[0],
 	signUp = document.getElementsByClassName("divSignUp")[0],
 	count = 0;
@@ -13,7 +13,7 @@ span.addEventListener("click", function(){
 		//signIn.style.transform = "rotateY(120deg)";
 		//signIn.style.left = "-80%";
 		signIn.className = "divSignIn signInStage2"
-		span.innerHTML = "Log in"
+		span.innerHTML = "Already  have  an  account <span id = 'spanTextForm'> Log In </span>";
 	}
 
 	if(count == 2) {
@@ -24,7 +24,7 @@ span.addEventListener("click", function(){
 		//signUp.style.transform = "rotateY(-120deg)";
 		signUp.className = "divSignUp"
 		signIn.className = "divSignIn"
-		span.innerHTML = "Create an account"
+		span.innerHTML = "Don't  have  an  account <span id = 'spanTextForm'> Create an account </span>";
 	}
 
 }, false);

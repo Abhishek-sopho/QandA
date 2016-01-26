@@ -85,12 +85,10 @@ input[type = "submit"] {
 
 input[type = "submit"]:hover {
 	transform: scale(1.1, 1.1);
-	font-size: 1em;
 }
 
 input[type = "submit"]:focus {
 	transform: scale(1.1, 1.1);
-	font-size: 1em;
 }
 
 #divFormChange {
@@ -127,6 +125,18 @@ input[type = "submit"]:focus {
 }
 
 input:focus::-webkit-input-placeholder {
+    color: rgba(0, 0, 0, 0);
+}
+
+input:focus:-moz-placeholder {
+    color: rgba(0, 0, 0, 0);
+}
+
+input:focus::-moz-placeholder {
+    color: rgba(0, 0, 0, 0);
+}
+
+input:focus:-ms-input-placeholder {
     color: rgba(0, 0, 0, 0);
 }
 
