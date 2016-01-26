@@ -1,0 +1,155 @@
+@font-face {
+	font-family: champagne;
+	src: url("/fonts/Champagne & Limousines Bold.ttf");
+}
+
+* {
+	margin: 0px;
+	padding: 0px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	width: 100%;
+	height: 100%;
+	font-family: champagne;
+	perspective: 600px;
+	position: relative;
+	overflow: hidden;
+	background-color: rgba(38, 95, 151, 0.9);
+}
+
+.divSignIn{
+	width: 30%;
+	padding: 10% 0 0 0;
+	text-align: center;
+	display: inline-block;
+	position: absolute;
+	left: 35%;
+	bottom: 38%;
+	transition: all 2s;
+	perspective: 600px;
+}
+
+.divSignUp {
+	width: 30%;
+	padding: 10% 0 0 0;
+	text-align: center;
+	display: inline-block;
+	position: absolute;
+	bottom: 36%;
+	left: 145%;
+	transition: all 2s;
+	perspective: 600px;
+	transform: rotateY(-120deg);
+	visibility: hidden;
+}
+
+form {
+	width: 80%;
+	display: inline-block;
+}
+
+input {
+	width: 90%;
+	padding: 2%;
+	margin-bottom: 10px;
+	font-family: champagne;
+	letter-spacing: 1px;
+	border: 1px solid white;
+	-webkit-transition: all 0.3s;
+	transition: all 0.3s;
+	font-size: 1em;
+	background-color: rgba(0, 0, 0, 0);
+	color: white;
+	border-left: none;
+}
+
+input:focus {
+	outline: none;
+}
+
+input[type = "submit"] {
+	background-color: rgba(0, 0, 0, 0);
+	color: white;
+	border-left: 1px solid white;
+	width: 80%;
+}
+
+input[type = "submit"]:hover {
+	transform: scale(1.1, 1.1);
+	font-size: 1em;
+}
+
+input[type = "submit"]:focus {
+	transform: scale(1.1, 1.1);
+	font-size: 1em;
+}
+
+#divFormChange {
+	position: absolute;
+	bottom: 33%;
+	font-size: 0.7em;
+	letter-spacing: 1px;
+	z-index: 100;
+	color: white;
+	width: 100%;
+	text-align: center;
+	display: inline-block;
+}
+
+#spanTextForm {
+	text-decoration: underline;
+	z-index: 100;
+}
+
+::-webkit-input-placeholder {
+    color: white;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    transition: all 0.2s;
+}
+:-moz-placeholder {
+    color: white;
+}
+::-moz-placeholder {
+    color: white;
+}
+:-ms-input-placeholder {
+    color: white;
+}
+
+input:focus::-webkit-input-placeholder {
+    color: rgba(0, 0, 0, 0);
+}
+
+.signInStage2 {
+	transform: rotateY(120deg);
+	left: -80%;
+	visibility: hidden;
+}
+
+.signUpStage2 {
+	left: 35%;
+	transform: rotateY(0deg);
+	visibility: visible;
+}
+
+label {
+	display: inline-block;
+	font-size: 1em;
+	padding: 2%;
+	border: 1px solid white;
+	border-right: none;
+}
+
+i {
+	color: white;
+}

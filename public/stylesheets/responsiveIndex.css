@@ -1,0 +1,91 @@
+@media (max-width: 1039px){
+	input {
+		font-size: 0.8em;
+	}
+
+	label {
+		font-size: 0.8em;
+	}
+
+	#divFormChange {
+		font-size: 0.8em;
+	}
+}
+
+@media (max-width: 850px) {
+	input {
+		font-size: 0.6em;
+	}
+
+	label {
+		font-size: 0.6em;
+	}
+
+	#divFormChange {
+		font-size: 0.6em;
+	}
+}
+
+@media(max-width: 650px){
+	input {
+		font-size: 0.5em;
+	}
+
+	label {
+		font-size: 0.5em;
+	}
+
+	#divFormChange {
+		font-size: 0.5em;
+	}
+
+	.divSignIn {
+		width: 70%;
+		left: 15%;
+	}
+
+	.signInStage2 {
+		left: -150%;
+	}
+
+	.divSignUp {
+		width: 70%;
+		left: 215%;
+	}
+
+	.signUpStage2 {
+		left: 15%;
+	}
+}
+
+@media (max-width: 560px){
+	.divSignIn {
+		width: 90%;
+		left: 5%;
+	}
+
+	.signInStage2 {
+		left: -150%;
+	}
+
+	.divSignUp {
+		width: 90%;
+		left: 215%;
+	}
+
+	.signUpStage2 {
+		left: 5%;
+	}
+
+	#divFormChange {
+		font-size: 0.5em;
+	}
+
+	input {
+		font-size: 0.7em;
+	}
+
+	label {
+		font-size: 0.7em;
+	}
+}
