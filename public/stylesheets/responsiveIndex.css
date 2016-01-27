@@ -56,6 +56,33 @@
 	.signUpStage2 {
 		left: 15%;
 	}
+
+	#divMenu {
+		height: 100%;
+	}
+
+	.divMenuNotVisible {
+		top: -100%;
+	}
+
+	.divTitle {
+		left: 4%;
+	}
+
+	.divTitle .spanQ {
+		font-size: 2em;
+	}
+
+	.divTitle .spanA {
+		font-size: 2em;
+	}
+
+	.divMenuButton {
+		font-size: 1.5em;
+		top: 1%;
+		right: 4%;
+	}
+
 }
 
 @media (max-width: 560px){
@@ -87,5 +114,78 @@
 
 	label {
 		font-size: 0.7em;
+	}
+
+	#divMenu {
+		height: 100%;
+	}
+
+	.divMenuNotVisible {
+		top: -100%;
+	}
+
+	.divTitle {
+		left: 4%;
+	}
+
+	.divTitle .spanQ {
+		font-size: 2em;
+	}
+
+	.divTitle .spanA {
+		font-size: 2em;
+	}
+
+	.divMenuButton {
+		font-size: 1.5em;
+		top: 1%;
+		right: 4%;
+	}
+
+}
+
+@media (max-height: 550px) {
+	.divTitle {
+		top: 0.5%;
+	}
+
+	.divTitle .spanQ {
+		font-size: 2.5em;
+	}
+
+	.divTitle .spanA {
+		font-size: 2.5em;
+	}
+
+	.divMenuButton {
+		font-size: 1.8;
+	}
+}
+
+@media (max-height: 450px) {
+	.divTitle {
+		top: -0.5%;
+	}
+
+	.divTitle .spanQ {
+		font-size: 2.3em;
+	}
+
+	.divTitle .spanA {
+		font-size: 2.3em;
+	}
+
+	.divMenuButton {
+		font-size: 1.5em;
+	}
+}
+
+@media (max-height: 390px) and (max-width: 850px){
+	#divMenu {
+		height: 100%;
+	}
+
+	.divMenuNotVisible {
+		top: -100%;
 	}
 }

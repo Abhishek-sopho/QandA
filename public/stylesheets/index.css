@@ -19,7 +19,6 @@ html {
 body {
 	width: 100%;
 	height: 100%;
-	font-family: champagne;
 	perspective: 600px;
 	position: relative;
 	overflow: hidden;
@@ -96,16 +95,17 @@ input[type = "submit"]:focus {
 	bottom: 33%;
 	font-size: 0.7em;
 	letter-spacing: 1px;
-	z-index: 100;
+	z-index: 10;
 	color: white;
 	width: 100%;
 	text-align: center;
 	display: inline-block;
+	font-family: champagne;
 }
 
 #spanTextForm {
 	text-decoration: underline;
-	z-index: 100;
+	z-index: 10;
 }
 
 ::-webkit-input-placeholder {
@@ -116,12 +116,21 @@ input[type = "submit"]:focus {
 }
 :-moz-placeholder {
     color: white;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    transition: all 0.2s;
 }
 ::-moz-placeholder {
     color: white;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    transition: all 0.2s;
 }
 :-ms-input-placeholder {
     color: white;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    transition: all 0.2s;
 }
 
 input:focus::-webkit-input-placeholder {
@@ -158,8 +167,59 @@ label {
 	padding: 2%;
 	border: 1px solid white;
 	border-right: none;
+	font-family: champagne;
+	color: white;
 }
 
-i {
+.divMenuButton {
 	color: white;
+	font-size: 2em;
+	font-weight: bold;
+	position: absolute;
+	right: 2%;
+	top: 2%;
+	perspective: 600px;
+	z-index: 10;
+	transition: all 0.5s;
+}
+
+.divMenuButtonColored {
+	color: rgba(38, 95, 151, 0.9);
+}
+
+#divMenu {
+	width: 100%;
+	height: 10%;
+	background-color: rgba(255, 255, 255, 1);
+	transition: all 0.5s;
+	position: absolute;
+}
+
+.divMenuNotVisible {
+	top: -10%;
+}
+
+.divMenuVisible {
+	top: 0%;
+}
+
+.divTitle {
+	font-family: champagne;
+	color: white;
+	position: absolute;
+	left: 2%;
+	z-index: 10;
+	transition: all 0.5s;
+}
+
+.divTitleColored {
+	color: rgba(38, 95, 151, 0.9);
+}
+
+.divTitle .spanQ {
+	font-size: 3em;
+}
+
+.divTitle .spanA {
+	font-size: 3em;
 }
