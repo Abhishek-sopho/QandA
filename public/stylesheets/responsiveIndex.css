@@ -12,6 +12,7 @@
 	}
 }
 
+
 @media (max-width: 850px) {
 	input {
 		font-size: 0.6em;
@@ -25,6 +26,7 @@
 		font-size: 0.6em;
 	}	
 }
+
 
 @media(max-width: 650px){
 	input {
@@ -83,7 +85,26 @@
 		right: 4%;
 	}
 
+	#ulMenu {
+		margin-top: 15%;
+	}
+
+	#ulMenu li {
+		width: 60%;
+		border: 1px solid rgba(38, 95, 151, 0.9);
+		margin: 1%;
+		padding: 2%;
+	}
+
+	#ulMenu li.active {
+		border-bottom: 1px solid rgba(38, 95, 151, 0.9);
+	}
+
+	#ulMenu li i {
+		display: none;
+	}
 }
+
 
 @media (max-width: 560px){
 	.divSignIn {
@@ -142,7 +163,42 @@
 		right: 4%;
 	}
 
+	#ulMenu {
+		margin-top: 45%;
+	}
+
+	#ulMenu li {
+		width: 60%;
+		border: 1px solid rgba(38, 95, 151, 0.9);
+		margin: 1%;
+		padding: 2%;
+	}
+
+	#ulMenu li.active {
+		border-bottom: 1px solid rgba(38, 95, 151, 0.9);
+	}
+
+	#ulMenu li i {
+		display: none;
+	}
+
 }
+
+
+@media (max-width: 260px){
+	#divFormChange {
+		font-size: 0.4em;
+	}
+
+	input {
+		font-size: 0.5em;
+	}
+
+	label {
+		font-size: 0.5em;
+	}
+}
+
 
 @media (max-height: 550px) {
 	.divTitle {
@@ -160,7 +216,16 @@
 	.divMenuButton {
 		font-size: 1.8;
 	}
+
+	#ulMenu li {
+		font-size: 0.7em;
+	}
+
+	#ulMenu li i {
+		font-size: 1.7em;
+	}
 }
+
 
 @media (max-height: 450px) {
 	.divTitle {
@@ -178,14 +243,114 @@
 	.divMenuButton {
 		font-size: 1.5em;
 	}
+
+	#ulMenu li {
+		font-size: 0.7em;
+	}
+
+	#ulMenu li i {
+		font-size: 0.8em;
+	}
 }
 
-@media (max-height: 390px) and (max-width: 850px){
+
+@media (max-height: 420px) and (max-width: 850px){
 	#divMenu {
 		height: 100%;
 	}
 
 	.divMenuNotVisible {
 		top: -100%;
+	}
+
+	#ulMenu li {
+		width: 60%;
+		border: 1px solid rgba(38, 95, 151, 0.9);
+		margin: 1%;
+		padding: 2%;
+	}
+
+	#ulMenu {
+		margin-top: 15%;
+	}
+
+	#ulMenu li.active {
+		border-bottom: 1px solid rgba(38, 95, 151, 0.9);
+	}
+
+	#ulMenu li i {
+		display: none;
+	}
+}
+
+@media (max-height: 420px) and (max-width: 650px){
+	#divMenu {
+		height: 100%;
+	}
+
+	.divMenuNotVisible {
+		top: -100%;
+	}
+
+	#ulMenu li {
+		width: 60%;
+		border: 1px solid rgba(38, 95, 151, 0.9);
+		margin: 1%;
+		padding: 2%;
+	}
+
+	#ulMenu {
+		margin-top: 15%;
+	}
+
+	#ulMenu li.active {
+		border-bottom: 1px solid rgba(38, 95, 151, 0.9);
+	}
+
+	#ulMenu li i {
+		display: none;
+	}
+}
+
+@media (max-height: 420px) and (min-width: 650px) and (max-width: 850px){
+	#ulMenu li i {
+		font-size: 1.5em;
+	}
+
+	#ulMenu li {
+		width: 60%;
+		border: 1px solid rgba(38, 95, 151, 0.9);
+		margin: 1%;
+		padding: 1%;
+	}
+
+	#ulMenu {
+		margin-top: 15%;
+	}
+
+	#ulMenu li.active {
+		border-bottom: 1px solid rgba(38, 95, 151, 0.9);
+	}
+
+	#ulMenu li i {
+		display: none;
+	}
+}
+
+@media(max-height: 600px) and (min-width: 650px){
+	#ulMenu li i {
+		font-size: 1.5em;
+	}
+}
+
+@media(max-height: 600px) and (min-width: 650px) and (max-width: 730px){
+	#ulMenu li{
+		font-size: 0.8em;
+	}
+}
+
+@media (max-height: 440px) and (min-width: 400px){
+	#ulMenu li i {
+		font-size: 1em;
 	}
 }

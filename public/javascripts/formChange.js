@@ -3,6 +3,7 @@ var span = document.getElementById("divFormChange"),
 	signUp = document.getElementsByClassName("divSignUp")[0],
 	menu = document.getElementById("divMenu"),
 	title = document.getElementsByClassName("divTitle")[0],
+	menuItem = document.getElementsByClassName("listItem"),
 	count = 0;
 
 span.addEventListener("click", function(){
@@ -28,3 +29,27 @@ document.getElementsByClassName("divMenuButton")[0].addEventListener("click", fu
 	this.className = (this.className == "divMenuButton")?"divMenuButton divMenuButtonColored":"divMenuButton";
 	menu.className = (menu.className == "divMenuNotVisible")?"divMenuVisible":"divMenuNotVisible";
 }, false);
+
+window.addEventListener("load", function(){
+	for(var i = 0;  i < menuItem.length; i++){
+		menuItem[i].countJump = 0;
+	}
+})
+
+for(var i = 0; i < menuItem.length; i++){
+	menuItem[i].addEventListener("mouseenter", jumpI, false);
+}
+
+function jumpI(event){
+	jumpIcon(this);	
+}
+
+function jumpIcon(that){
+	that.countJump++;
+	switch(that.countJump){
+		case 1: that.getElementsByTagName("i")[0].style.transform = "translateY(-20px)"; setTimeout(function(){jumpIcon(that)}, 200); break;
+		case 2: that.getElementsByTagName("i")[0].style.transform = "translateY(15px)"; setTimeout(function(){jumpIcon(that)}, 200); break;
+		case 3: that.getElementsByTagName("i")[0].style.transform = "translateY(-10px)"; setTimeout(function(){jumpIcon(that)}, 200); break;
+		case 4: that.getElementsByTagName("i")[0].style.transform = "translateY(5px)"; that.countJump = 0; break;
+	}
+}

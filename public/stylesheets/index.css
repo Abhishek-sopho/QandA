@@ -22,6 +22,8 @@ body {
 	perspective: 600px;
 	position: relative;
 	overflow: hidden;
+	min-height: 400px;
+	min-width: 300px;
 	background-color: rgba(38, 95, 151, 0.9);
 }
 
@@ -179,7 +181,7 @@ label {
 	right: 2%;
 	top: 2%;
 	perspective: 600px;
-	z-index: 10;
+	z-index: 20;
 	transition: all 0.5s;
 }
 
@@ -193,6 +195,8 @@ label {
 	background-color: rgba(255, 255, 255, 1);
 	transition: all 0.5s;
 	position: absolute;
+	text-align: center;
+	z-index: 15;
 }
 
 .divMenuNotVisible {
@@ -210,6 +214,7 @@ label {
 	left: 2%;
 	z-index: 10;
 	transition: all 0.5s;
+	z-index: 20;
 }
 
 .divTitleColored {
@@ -222,4 +227,34 @@ label {
 
 .divTitle .spanA {
 	font-size: 3em;
+}
+
+#ulMenu li {
+	display: inline-block;
+	width: 10%;
+	color: rgba(38, 95, 151, 0.9);
+	font-family: champagne;
+	padding-bottom: 0.48%;
+	font-size: 1em;
+	padding-top: 0.4%;
+	cursor: pointer;
+}
+
+#ulMenu li.active {
+	background-color: rgba(38, 95, 151, 0.9);
+	color: white;
+}
+
+#ulMenu li i {
+	font-size: 2em;
+	margin-bottom: 5px;
+	display: block;
+	-webkit-transition: all 0.2s;
+	-moz-transition: all 0.2s;
+	transition: all 0.2s;
+}
+
+#ulMenu li:hover {
+	background-color: rgba(38, 95, 151, 0.9);
+	color: white;
 }
