@@ -19,37 +19,107 @@ html {
 body {
 	width: 100%;
 	height: 100%;
-	perspective: 600px;
 	position: relative;
 	overflow: hidden;
 	min-height: 400px;
 	min-width: 300px;
+}
+
+#divBody1 {
+	width: 100%;
+	height: 100%;
+	position: absolute;
 	background-color: rgba(38, 95, 151, 0.9);
+	-webkit-perspective: 600px;
+	-moz-perspective: 600px;
+	perspective: 600px;
+	z-index: 12;
+}
+
+#divBody2 {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: -100%;
+	background-color: rgb(45, 134, 89);
+	-webkit-perspective: 600px;
+	-moz-perspective: 600px;
+	perspective: 600px;
+	z-index: 11;
+}
+
+#divBody3 {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: -100%;
+	background-color: rgb(148, 125, 56);
+	-webkit-perspective: 600px;
+	-moz-perspective: 600px;
+	perspective: 600px;
+	z-index: 11;
+}
+
+#divBody4 {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: -100%;
+	background-color: rgba(134, 45, 45, 1);
+	-webkit-perspective: 600px;
+	-moz-perspective: 600px;
+	perspective: 600px;
+	z-index: 11;
+}
+
+#divBody1Left {
+	width: 50%;
+	height: 100%;
+	position: absolute;
+	left: 0px;
+}
+
+#divForm {
+	width: 50%;
+	height: 100%;
+	position: absolute;
+	right: 0px;
+	overflow: hidden;
 }
 
 .divSignIn{
-	width: 30%;
+	width: 100%;
 	padding: 10% 0 0 0;
 	text-align: center;
 	display: inline-block;
 	position: absolute;
-	left: 35%;
 	bottom: 38%;
+	left: 0px;
+	-webkit-transition: all 2s;
+	-moz-transition: all 2s;
 	transition: all 2s;
+	-webkit-perspective: 600px;
+	-moz-perspective: 600px;
 	perspective: 600px;
 }
 
 .divSignUp {
-	width: 30%;
+	width: 100%;
 	padding: 10% 0 0 0;
 	text-align: center;
 	display: inline-block;
 	position: absolute;
 	bottom: 36%;
-	left: 145%;
+	left: 120%;
+	-webkit-transition: all 2s;
+	-moz-transition: all 2s;
 	transition: all 2s;
 	perspective: 600px;
+	-webkit-perspective: 600px;
+	-moz-perspective: 600px;
 	transform: rotateY(-120deg);
+	-webkit-transform: rotateY(-120deg);
+	-moz-transform: rotateY(-120deg);
 	visibility: hidden;
 }
 
@@ -59,13 +129,14 @@ form {
 }
 
 input {
-	width: 90%;
+	width: 70%;
 	padding: 2%;
 	margin-bottom: 10px;
 	font-family: champagne;
 	letter-spacing: 1px;
 	border: 1px solid white;
 	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
 	transition: all 0.3s;
 	font-size: 1em;
 	background-color: rgba(0, 0, 0, 0);
@@ -81,14 +152,18 @@ input[type = "submit"] {
 	background-color: rgba(0, 0, 0, 0);
 	color: white;
 	border-left: 1px solid white;
-	width: 80%;
+	width: 60%;
 }
 
 input[type = "submit"]:hover {
+	-webkit-transform: scale(1.1, 1.1);
+	-moz-transform: scale(1.1, 1.1);
 	transform: scale(1.1, 1.1);
 }
 
 input[type = "submit"]:focus {
+	-webkit-transform: scale(1.1, 1.1);
+	-moz-transform: scale(1.1, 1.1);
 	transform: scale(1.1, 1.1);
 }
 
@@ -152,15 +227,19 @@ input:focus:-ms-input-placeholder {
 }
 
 .signInStage2 {
-	transform: rotateY(120deg);
 	left: -80%;
+	-webkit-transform: rotateY(120deg);
+	-moz-transform: rotateY(120deg);
+	transform: rotateY(120deg);
 	visibility: hidden;
 }
 
 .signUpStage2 {
-	left: 35%;
-	transform: rotateY(0deg);
 	visibility: visible;
+	left: 0px;
+	-webkit-transform: rotateY(0deg);
+	-moz-transform: rotateY(0deg);
+	transform: rotateY(0deg);
 }
 
 label {
@@ -180,19 +259,35 @@ label {
 	position: absolute;
 	right: 2%;
 	top: 2%;
+	-webkit-perspective: 600px;
+	-moz-perspective: 600px;
 	perspective: 600px;
 	z-index: 20;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
 	transition: all 0.5s;
+	cursor: pointer;
 }
 
-.divMenuButtonColored {
+.divMenuButtonColored1 {
 	color: rgba(38, 95, 151, 0.9);
+}
+.divMenuButtonColored2 {
+	color: rgb(45, 134, 89);
+}
+.divMenuButtonColored3 {
+	color: rgb(148, 125, 56);
+}
+.divMenuButtonColored4 {
+	color: rgba(134, 45, 45, 1);
 }
 
 #divMenu {
 	width: 100%;
 	height: 10%;
 	background-color: rgba(255, 255, 255, 1);
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
 	transition: all 0.5s;
 	position: absolute;
 	text-align: center;
@@ -212,13 +307,23 @@ label {
 	color: white;
 	position: absolute;
 	left: 2%;
-	z-index: 10;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
 	transition: all 0.5s;
 	z-index: 20;
 }
 
-.divTitleColored {
+.divTitleColored1 {
 	color: rgba(38, 95, 151, 0.9);
+}
+.divTitleColored2 {
+	color: rgb(45, 134, 89);
+}
+.divTitleColored3 {
+	color: rgb(148, 125, 56);
+}
+.divTitleColored4 {
+	color: rgba(134, 45, 45, 1);
 }
 
 .divTitle .spanQ {
@@ -232,17 +337,12 @@ label {
 #ulMenu li {
 	display: inline-block;
 	width: 10%;
-	color: rgba(38, 95, 151, 0.9);
 	font-family: champagne;
 	padding-bottom: 0.48%;
 	font-size: 1em;
 	padding-top: 0.4%;
 	cursor: pointer;
-}
-
-#ulMenu li.active {
-	background-color: rgba(38, 95, 151, 0.9);
-	color: white;
+	margin-left: -5px;
 }
 
 #ulMenu li i {
@@ -254,7 +354,58 @@ label {
 	transition: all 0.2s;
 }
 
-#ulMenu li:hover {
+.liHome {
+	color: rgba(38, 95, 151, 0.9);
+}
+
+#ulMenu .liHomeActive {
 	background-color: rgba(38, 95, 151, 0.9);
 	color: white;
+}
+
+.liContact {
+	color: rgb(45, 134, 89);
+}
+
+#ulMenu .liContactActive {
+	background-color: rgba(45, 134, 89, 1);
+	color: white;
+}
+
+.liShare {
+	color: rgb(148, 125, 56);
+}
+
+#ulMenu .liShareActive {
+	background-color: rgba(148, 125, 56, 1);
+	color: white;
+}
+
+.liAbout {
+	color: rgba(134, 45, 45, 1);
+}
+
+#ulMenu .liAboutActive {
+	background-color: rgba(134, 45, 45, 1);
+	color: white;
+}
+
+#ulMenu li.liHome:hover{
+	color: white;
+	background-color: rgba(38, 95, 151, 0.9);
+}
+
+#ulMenu li.liContact:hover{
+	color: white;
+	background-color: rgb(45, 134, 89);
+}
+
+#ulMenu li.liShare:hover{
+	color: white;
+	background-color: rgb(148, 125, 56);
+}
+
+#ulMenu li.liAbout:hover{
+	color: white;
+	background-color: rgba(134, 45, 45, 1);
 }

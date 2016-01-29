@@ -10,42 +10,64 @@
 	</head>
 
 	<body>
-			<div class = "divMenuButton"><i class = "fa fa-th-large"></i></div>
-			<div class = "divTitle"> <span class = "spanQ">Q</span><span class ="spanAnd">and</span><span class = "spanA">A</span></div>
-			<div id = "divMenu" class = "divMenuNotVisible">
-				<ul id = "ulMenu">
-					<li class = "listItem active"><i class = "fa fa-home"></i>Home</li>
-					<li class = "listItem"><i class = "fa fa-phone-square"></i>Contact Us</li>
-					<li class = "listItem"><i class = "fa fa-share-alt"></i>Share</li>
-					<li class = "listItem"><i class = "fa fa-info"></i>About Us</li>
-				</ul>
+
+		<div class = "divMenuButton"><i class = "fa fa-th-large"></i></div>
+		<div class = "divTitle"> <span class = "spanQ">Q</span><span class ="spanAnd">and</span><span class = "spanA">A</span></div>
+		<div id = "divMenu" class = "divMenuNotVisible">
+			<ul id = "ulMenu">
+				<li class = "listItem liHomeActive"><i class = "fa fa-home"></i>Home</li>
+				<li class = "listItem liContact"><i class = "fa fa-phone-square"></i>Contact Us</li>
+				<li class = "listItem liShare"><i class = "fa fa-share-alt"></i>Share</li>
+				<li class = "listItem liAbout"><i class = "fa fa-info"></i>About Us</li>
+			</ul>
+		</div>
+
+		<div id = "divBody1">
+			<div id = "divBody1Left">
+
 			</div>
-			<div class = "divSignIn">
-			<form action = "#" method = "POST">
-				<label for = "usernameSignIn"><i class = "fa fa-user"></i></label><input type = "text" placeholder = "Username" name = "usernameSignIn">
-				<br>
-				<label for = "passwordSignIn"><i class = "fa fa-user-secret"></i></label><input type = "password" placeholder = "Password" name = "passwordSignIn">
-				<br>
-				<input type = "submit" value = "Log In">
-			</form>
+
+			<div id = "divForm">
+				<div class = "divSignIn">
+					<form action = "#" method = "POST">
+						<label for = "usernameSignIn"><i class = "fa fa-user"></i></label><input type = "text" placeholder = "Username" name = "usernameSignIn">
+						<br>
+						<label for = "passwordSignIn"><i class = "fa fa-user-secret"></i></label><input type = "password" placeholder = "Password" name = "passwordSignIn">
+						<br>
+						<input type = "submit" value = "Log In">
+					</form>
+				</div>
+
+				<div id = "divFormChange">
+					Don't  have  an  account <span id = "spanTextForm"> Create an account </span>
+				</div>
+
+				<div class = "divSignUp">
+					<form action = "#" method = "POST">
+						<label for = "usernameSignIn"><i class = "fa fa-at"></i></label><input type = "text" placeholder = "E-mail">
+						<br>
+						<label for = "usernameSignIn"><i class = "fa fa-plus-square"></i></label><input type = "text" placeholder = "Username">
+						<br>
+						<label for = "usernameSignIn"><i class = "fa fa-shield"></i></label><input type = "password" placeholder = "Password">
+						<br>
+						<input type = "submit" value = "Create an account">
+					</form>
+				</div>
+			</div>
 		</div>
 
-		<div id = "divFormChange">
-			Don't  have  an  account <span id = "spanTextForm"> Create an account </span>
+		<div id = "divBody2">
+
 		</div>
 
-		<div class = "divSignUp">
-			<form action = "#" method = "POST">
-				<label for = "usernameSignIn"><i class = "fa fa-at"></i></label><input type = "text" placeholder = "E-mail">
-				<br>
-				<label for = "usernameSignIn"><i class = "fa fa-plus-square"></i></label><input type = "text" placeholder = "Username">
-				<br>
-				<label for = "usernameSignIn"><i class = "fa fa-shield"></i></label><input type = "password" placeholder = "Password">
-				<br>
-				<input type = "submit" value = "Create an account">
-			</form>
+		<div id = "divBody3">
+
 		</div>
 
+		<div id = "divBody4">
+
+		</div>
+		<script src = "/javascripts/bodySlide.js">	</script>
 		<script src = "/javascripts/formChange.js">	</script>
 	</body>
 </html>

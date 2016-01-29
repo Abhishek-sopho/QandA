@@ -25,19 +25,21 @@ span.addEventListener("click", function(){
 }, false);
 
 document.getElementsByClassName("divMenuButton")[0].addEventListener("click", function(){
-	title.className = (title.className == "divTitle")?"divTitle divTitleColored":"divTitle"
-	this.className = (this.className == "divMenuButton")?"divMenuButton divMenuButtonColored":"divMenuButton";
+	title.className = (title.className == "divTitle")?"divTitle divTitleColored" + prevActiveMenu.bodyCount:"divTitle"
+	this.className = (this.className == "divMenuButton")?"divMenuButton divMenuButtonColored" + prevActiveMenu.bodyCount:"divMenuButton";
 	menu.className = (menu.className == "divMenuNotVisible")?"divMenuVisible":"divMenuNotVisible";
 }, false);
 
 window.addEventListener("load", function(){
 	for(var i = 0;  i < menuItem.length; i++){
 		menuItem[i].countJump = 0;
+		menuItem[i].bodyCount = (i+1);
 	}
 })
 
 for(var i = 0; i < menuItem.length; i++){
 	menuItem[i].addEventListener("mouseenter", jumpI, false);
+	menuItem[i].addEventListener("click", bringBody, false);
 }
 
 function jumpI(event){
