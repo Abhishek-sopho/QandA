@@ -14,7 +14,7 @@ app.set('view engine', 'ejs');
 
 app.get("/", function(req, res){
 	route.index(req, res);
-})
+});
 
 app.use(express.static(__dirname + "/public"));
 
@@ -28,4 +28,4 @@ server.listen(3000, function(){
 	console.log("-----------------------------------");
 	console.log("Serve listening to port 3000");
 	console.log("-----------------------------------");
-})
+});

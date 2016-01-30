@@ -252,6 +252,26 @@ label {
 	color: white;
 }
 
+.spanValidity {
+	display: inline-block;
+	font-size: 1em;
+	color: white;
+	font-family: champagne;
+	padding-left: 5px;
+}
+
+.hiddenSpan {
+	visibility: hidden;
+}
+
+.spanValidity i.correct {
+	color: green;
+}
+
+.spanValidity i.wrong {
+	color: red;
+}
+
 .divMenuButton {
 	color: white;
 	font-size: 2em;
