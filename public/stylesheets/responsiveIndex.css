@@ -14,6 +14,15 @@
 	.spanValidity {
 		font-size: 0.8em;
 	}
+
+	.divContentLeft {
+		height: 35%;
+		bottom: 27%;
+	}
+
+	#divBody1Left {
+		font-size: 0.8em;
+	}
 }
 
 
@@ -32,7 +41,16 @@
 
 	.spanValidity {
 		font-size: 0.6em;
-	}	
+	}
+
+	.divContentLeft {
+		height: 30%;
+		bottom: 26%;
+	}
+
+	#divBody1Left {
+		font-size: 0.6em;
+	}
 }
 
 
@@ -130,6 +148,10 @@
 	#ulMenu li i {
 		display: none;
 	}
+
+	#divBody1Left {
+		display: none;
+	}
 }
 
 
@@ -217,6 +239,9 @@
 		display: none;
 	}
 
+	#divBody1Left {
+		display: none;
+	}
 }
 
 
@@ -262,6 +287,23 @@
 
 	#ulMenu li i {
 		font-size: 1.7em;
+	}
+
+	.divContentLeft {
+		height: 35%;
+		bottom: 27%;
+	}
+
+	#divBody1Left {
+		font-size: 0.6em;
+	}
+
+	#divLeftArrow {
+		bottom: 47%;
+	}
+
+	#divRightArrow {
+		bottom: 47%;
 	}
 }
 
@@ -324,6 +366,10 @@
 	#ulMenu li i {
 		display: none;
 	}
+
+	#divBody1Left {
+		display: none;
+	}
 }
 
 @media (max-height: 420px) and (max-width: 650px){
@@ -357,6 +403,10 @@
 	#ulMenu li i {
 		display: none;
 	}
+
+	#divBody1Left {
+		display: none;
+	}
 }
 
 @media (max-height: 420px) and (min-width: 650px) and (max-width: 850px){
@@ -384,13 +434,17 @@
 	}
 }
 
-@media(max-height: 620px) and (min-width: 650px){
+@media(max-height: 650px) and (min-width: 650px){
 	#ulMenu li i {
 		font-size: 1.6em;
 	}
 
 	#ulMenu li {
 		font-size: 0.85em;
+	}
+
+	.divContentLeft {
+		bottom: 25%;
 	}
 }
 

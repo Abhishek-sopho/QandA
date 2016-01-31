@@ -39,3 +39,31 @@ function bringBody(event){
 		}, 1000);
 	}
 }
+
+// divContentLeft slide-show
+var contentsArrowLeft = document.getElementById("divLeftArrow"),
+	contentsArrowRight = document.getElementById("divRightArrow"),
+	presentContentCount = 0;
+	
+contentsArrowLeft.addEventListener("click", slideShowLeft, false);
+contentsArrowRight.addEventListener("click", slideShowRight, false);
+
+function slideShowLeft(event){
+	document.getElementsByClassName("divContentLeft")[presentContentCount].className = "divContentLeft divContentLeft2";
+
+	presentContentCount -= 1;
+	if(presentContentCount == -1)
+		presentContentCount = 3;
+
+	document.getElementsByClassName("divContentLeft")[presentContentCount].className = "divContentLeft divContentLeft1";
+}
+
+function slideShowRight(event){
+	document.getElementsByClassName("divContentLeft")[presentContentCount].className = "divContentLeft divContentLeft2";
+
+	presentContentCount += 1;
+	if(presentContentCount == 4)
+		presentContentCount = 0;
+
+	document.getElementsByClassName("divContentLeft")[presentContentCount].className = "divContentLeft divContentLeft1";
+}
