@@ -1,19 +1,28 @@
 var express = require('express'),
 	http = require('http'),
 	path = require('path'),
-	bodyParser = require('body-parser'),
 	io = require('socket.io')
-	route = require('./routes/route');
-
+	route = require('./routes/route'),
+	bodyParser = require('body-parser');
+	
 var app = express();
 var server = http.createServer(app);
 
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + "/views");
 app.set('view engine', 'ejs');
+app.use(bodyParser());
 
 app.get("/", function(req, res){
 	route.index(req, res);
+});
+
+app.post("/signUp", function(req, res){
+	route.signUp(req, res);
+});
+
+app.post("/signIn", function(req, res){
+	route.signIn(req, res);
 });
 
 app.use(express.static(__dirname + "/public"));

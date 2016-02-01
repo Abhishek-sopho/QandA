@@ -34,12 +34,12 @@
 
 			<div id = "divForm">
 				<div class = "divSignIn">
-					<form action = "#" method = "POST">
-						<label for = "usernameSignIn"><i class = "fa fa-user"></i></label><input type = "text" placeholder = "Username" name = "usernameSignIn" autocorrect = "off" autocomplete  = "off">
+					<form action = "/signIn" method = "POST" id = "signIn">
+						<label for = "usernameSignIn"><i class = "fa fa-user"></i></label><input type = "text" placeholder = "Username" name = "usernameSignIn" autocorrect = "off" autocomplete  = "off"><span class = "spanValidity"><i class = "fa fa-asterisk"></i></span>
 						<br>
-						<label for = "passwordSignIn"><i class = "fa fa-user-secret"></i></label><input type = "password" placeholder = "Password" name = "passwordSignIn" autocorrect = "off" autocomplete  = "off">
+						<label for = "passwordSignIn"><i class = "fa fa-user-secret"></i></label><input type = "password" placeholder = "Password" name = "passwordSignIn" autocorrect = "off" autocomplete  = "off"><span class = "spanValidity"><i class = "fa fa-asterisk"></i></span>
 						<br>
-						<input type = "submit" value = "Log In">
+						<input type = "submit" value = "Log In"><span class = "spanValidity hiddenSpan"><i></i>A</span>
 					</form>
 				</div>
 
@@ -48,7 +48,7 @@
 				</div>
 
 				<div class = "divSignUp">
-					<form action = "#" method = "POST">
+					<form action = "/signUp" method = "POST" id = "signUp">
 						<label for = "email"><i class = "fa fa-at"></i></label><input type = "email" placeholder = "E-mail" name = "email" autocorrect = "off" autocomplete  = "off"><span class = "spanValidity"><i class = "fa fa-asterisk"></i></span>
 						<br>
 						<label for = "usernameSignUp"><i class = "fa fa-plus-square"></i></label><input type = "text" placeholder = "Username" name = "usernameSignUp" autocorrect = "off" autocomplete  = "off"><span class = "spanValidity"><i class = "fa fa-asterisk"></i></span>
