@@ -3,7 +3,12 @@ var mongoClient = require('mongodb').MongoClient,
 	bcrypt = require('bcrypt');
 
 exports.index = function(req, res){
-	res.render("index");
+	if(req.session.user){
+		res.redirect("/home");
+	}
+	else{
+		res.render("index");
+	}
 }
 
 exports.signUp = function(req, res){
@@ -18,22 +23,30 @@ exports.signUp = function(req, res){
 				username: req.body.usernameSignUp,
 				pass: req.body.passwordSignUp,
 				email: req.body.email,
-				salt: "something"
 			};
 
 			bcrypt.genSalt(10, function(err, salt){
 				bcrypt.hash(user.pass, salt, function(err, hash){
-					user.salt = salt;
 					user.pass = hash;
-					db.collection('users').insertOne(user, function(err, result){
-						if(err){
-							res.end("OH CRAP!!! SOME INTERNAL ERROR");
-							db.close();
+
+					db.collection('users').find({"username": user.username}).count(function(err, val){
+						if(val == 0){
+							db.collection('users').insertOne(user, function(err, result){
+								if(err){
+									res.end("OH CRAP!!! SOME INTERNAL ERROR");
+									db.close();
+								}
+
+								else {
+									db.close();
+									req.session.user = user.username; //Login the user into his/her account and set the session
+									res.redirect("/home");
+								}
+							});
 						}
 
 						else {
-							db.close();
-							res.end("Your account has been created.");
+							res.end("Sorry Username Already taken");
 						}
 					});
 				});
@@ -55,27 +68,49 @@ exports.signIn = function(req, res){
 				password: req.body.passwordSignIn
 			}
 				
-			var cursor = db.collection('users').find({"username": user.username});
-			cursor.each(function(err, doc){
-				if(err){
-					res.end("Some internal error!");
-					db.close();
+			db.collection('users').find({"username": user.username}).count(function(err, count){
+				if(count == 0){
+					res.end("Sorry Wrong Username or Password");
 				}
+
 				else {
-					if(doc != null){
-						bcrypt.compare(user.password, doc.pass, function(err, log){
-							if(log == true)
-								res.end("YOUR EMAIL IS: " + doc.email);
-							else
-								res.end("Sorry wrong username or password");
+					var cursor = db.collection('users').find({"username": user.username})
+					cursor.each(function(err, doc){
+						if(err){
+							res.end("Some internal error!");
 							db.close();
-						});
-					}
-					else {
-						db.close();
-					}
+						}
+						else {
+							if(doc != null){
+								bcrypt.compare(user.password, doc.pass, function(err, log){
+									if(log == true){
+										req.session.user = user.username; //Login the user into his/her account and set the session
+										res.redirect("/home");
+									}
+									else
+										res.end("Sorry wrong username or password");
+									db.close();
+								});
+							}
+							else {
+								db.close();
+							}
+						}
+					});
 				}
 			});
 		}
 	});
+};
+
+exports.home = function(req, res){
+	if(req.session.user)
+		res.render("home");
+	else
+		res.redirect("/");
+};
+
+exports.logOut = function(req, res){
+	req.session.destroy();
+	res.redirect("/");
 }

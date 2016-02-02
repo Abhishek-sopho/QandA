@@ -10,6 +10,7 @@
     "ejs": "~2.3.3",
     "express": "~4.13.1",
     "socket.io": "latest",
-    "mongodb": "*"
+    "mongodb": "*",
+    "express-session": "*"
   }
 }
