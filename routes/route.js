@@ -14,7 +14,6 @@ exports.index = function(req, res){
 exports.signUp = function(req, res){
 	mongoClient.connect("mongodb://127.0.0.1:27017/testLogin", function(err, db){
 		if(err){
-			db.close();
 			res.end("error bro!!" + err);
 		}
 
@@ -34,7 +33,6 @@ exports.signUp = function(req, res){
 							db.collection('users').insertOne(user, function(err, result){
 								if(err){
 									res.end("OH CRAP!!! SOME INTERNAL ERROR");
-									db.close();
 								}
 
 								else {
@@ -46,6 +44,7 @@ exports.signUp = function(req, res){
 						}
 
 						else {
+							db.close();
 							res.end("Sorry Username Already taken");
 						}
 					});
@@ -58,7 +57,6 @@ exports.signUp = function(req, res){
 exports.signIn = function(req, res){
 	mongoClient.connect("mongodb://127.0.0.1:27017/testLogin", function(err, db){
 		if(err){
-			db.close();
 			res.end("Error signing in" + err);
 		}
 
@@ -70,6 +68,7 @@ exports.signIn = function(req, res){
 				
 			db.collection('users').find({"username": user.username}).count(function(err, count){
 				if(count == 0){
+					db.close();
 					res.end("Sorry Wrong Username or Password");
 				}
 
@@ -78,7 +77,6 @@ exports.signIn = function(req, res){
 					cursor.each(function(err, doc){
 						if(err){
 							res.end("Some internal error!");
-							db.close();
 						}
 						else {
 							if(doc != null){
@@ -86,6 +84,7 @@ exports.signIn = function(req, res){
 									if(log == true){
 										req.session.user = user.username; //Login the user into his/her account and set the session
 										res.redirect("/home");
+										db.close();
 									}
 									else
 										res.end("Sorry wrong username or password");
@@ -105,7 +104,7 @@ exports.signIn = function(req, res){
 
 exports.home = function(req, res){
 	if(req.session.user)
-		res.render("home");
+		res.render("home", {"user": req.session.user});
 	else
 		res.redirect("/");
 };

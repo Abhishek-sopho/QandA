@@ -2,10 +2,32 @@
 <html>
 	<head>
 		<title> QandA - Home </title>
+		<link href = "/stylesheets/home.css" rel = "stylesheet" type = "text/css">
+		<link rel = "stylesheet" type = "text/css" href = "/stylesheets/font-awesome.min.css">
 		<meta charset = "utf-8">
 	</head>
 	<body>
-		<h1> Welcome to your account! </h1>
-		<a href = "/logout"> Log Out </a>
+		<div class = "divHeader">
+			<div class = "divTitle"> <span class = "spanQ">Q</span><span class ="spanAnd">and</span><span class = "spanA">A</span></div>
+			<div class = "divProfileMenu">
+				<ul>
+          			<li><div class = "divBackMenu"></div><a href = "#"> Home </a></li>
+         			<li><div class = "divBackMenu"></div><a href = "#"> Topics </a></li>
+         			<li><div class = "divBackMenu"></div><a href = "#"> Profile </a></li>
+          			<li><div class = "divBackMenu"></div><a href = "/logout"> Log Out </a></li>
+          		</ul>
+			</div>
+		</div>
+
+		<div id = "divBody">	</div>
+
+		<script>
+			document.getElementsByClassName("divAccountLink")[0].addEventListener("click", function(event){
+				var elem = this.getElementsByTagName("i")[0];
+				var elemMenu = document.getElementsByClassName("divProfileMenu")[0];
+				elem.className = (elem.className == "fa fa-user")?"fa fa-close":"fa fa-user";
+				elemMenu.className = (elemMenu.className == "divProfileMenu")?"divProfileMenu divMenuVisible":"divProfileMenu";
+			})
+		</script>
 	</body>
 </html>

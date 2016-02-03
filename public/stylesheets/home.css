@@ -1,0 +1,113 @@
+@font-face {
+	font-family: champagne;
+	src: url("/fonts/Champagne & Limousines Bold.ttf");
+}
+
+* {
+	margin: 0px;
+	padding: 0px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.divHeader {
+	position: fixed;
+	width: 100%;
+	background-color: rgba(134, 45, 45, 1);
+}
+
+.divTitle {
+	font-family: champagne;
+	color: white;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	transition: all 0.5s;
+	z-index: 20;
+	padding: 5px 20px;
+	display: inline-block;
+}
+
+.divTitle .spanQ {
+	font-size: 3em;
+}
+
+.divTitle .spanA {
+	font-size: 3em;
+}
+
+.divAccountLink {
+	color: white;
+	font-size: 1.5em;
+	padding: 5px 10px;
+	display: inline-block;
+	border: 1px solid white;
+	position: absolute;
+	top: 20%;
+	right: 3%;
+	cursor: pointer;
+	-webkit-transition: all 0.2s;
+	-moz-transition: all 0.2s;
+	transition: all 0.2s;
+}
+
+.divAccountLink:hover {
+	color: rgba(134, 45, 45, 1);
+	background-color: white;
+}
+
+.divProfileMenu {
+	position: fixed;
+	top: 0px;
+	width: 90%;
+	left: 5%;
+	padding: 20px 5px;
+	color: white;
+	text-align: right;
+	-webkit-transition: all 0.2s;
+	-moz-transition: all 0.2s;
+	transition: all 0.2s;
+}
+
+.divProfileMenu a {
+	color: white;
+	text-decoration: none;
+	font-family: champagne;
+}
+
+#divBody {
+	height: 1000px;
+}
+
+.divProfileMenu ul {
+  list-style-type: none;
+}
+
+.divProfileMenu ul li {
+  display: inline-block;
+  position: relative;
+  margin-left: 5px;
+}
+
+.divProfileMenu li a {
+  padding: 5px 10px;
+  display: block;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
+
+.divBackMenu {
+  height: 2px;
+  background-color: white;
+  width: 0px;
+  position: absolute;
+  bottom: 0px;
+  -webkit-transition: width 0.5s;
+  -moz-transition: width 0.5s;
+  transition: width 0.5s;
+}
+
+.divProfileMenu ul li:hover .divBackMenu {
+  width: 100%;
+}
