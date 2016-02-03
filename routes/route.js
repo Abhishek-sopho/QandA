@@ -114,3 +114,32 @@ exports.logOut = function(req, res){
 	req.session.destroy();
 	res.redirect("/");
 }
+
+exports.available = function(req, res){
+	mongoClient.connect("mongodb://127.0.0.1:27017/testLogin", function(err, db){
+		if(req.body.check == "email"){
+			db.collection("users").find({"email": req.body.email}).count(function(err, val){
+				if(val == 0){
+					res.end(JSON.stringify({"output": "true", "check": "email"}));
+					db.close();
+				}
+				else {
+					res.end(JSON.stringify({"output": "false", "check": "email"}));
+					db.close();
+				}
+			});
+		}
+		else if(req.body.check == "username"){
+			db.collection("users").find({"username": req.body.username}).count(function(err, val){
+				if(val == 0){
+					res.end(JSON.stringify({"output": "true", "check": "username"}));
+					db.close();
+				}
+				else {
+					res.end(JSON.stringify({"output": "false", "check": "username"}));
+					db.close();
+				}
+			});
+		}
+	});
+}

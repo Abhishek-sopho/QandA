@@ -36,6 +36,10 @@ app.get("/logout", function(req, res){
 	route.logOut(req, res);
 });
 
+app.post("/available", function(req, res){
+	route.available(req, res);
+});
+
 app.use(express.static(__dirname + "/public"));
 
 // This must be last one otherwise it will route any other requests

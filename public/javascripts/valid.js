@@ -1,7 +1,33 @@
 var email, usernameSignUp, passwordSignUp;
 var usernameSignIn, passwordSignIn;
 var emailAuth = false, userAuth = false, passAuth = false,
-	userAuthIn = false, passAuthIn = false;
+	userAuthIn = false, passAuthIn = false, emailAvail = false, userAvail = false;
+
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function(){
+	if(xmlhttp.readyState == 4){
+		var res = JSON.parse(xmlhttp.responseText);
+		console.log(res);
+		if(res.output == "true"){
+			if(res.check == "email"){
+				emailAvail  = true;
+				document.getElementsByName("email")[0].nextSibling.getElementsByTagName("i")[0].className = "fa fa-check-circle";
+			}
+			else if(res.check == "username"){
+				userAvail = true;
+				document.getElementsByName("usernameSignUp")[0].nextSibling.getElementsByTagName("i")[0].className = "fa fa-check-circle";
+			}
+		}
+		else {
+			if(res.check == "email"){
+				document.getElementsByName("email")[0].nextSibling.getElementsByTagName("i")[0].className = "fa fa-warning";
+			}
+			else if(res.check == "username"){
+				document.getElementsByName("usernameSignUp")[0].nextSibling.getElementsByTagName("i")[0].className = "fa fa-warning";
+			}
+		}
+	}
+}
 
 //SIGN UP VALIDITY
 document.getElementsByName("email")[0].addEventListener("input", function(event){
@@ -52,12 +78,25 @@ document.getElementsByName("email")[0].addEventListener("blur", function(event){
 	if(this.value == ""){
 		this.nextSibling.getElementsByTagName("i")[0].className = "fa fa-asterisk";
 	}
+	else if(emailAuth == true){
+		xmlhttp.open("POST", "/available");
+		xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		xmlhttp.send("email=" + this.value + "&check=email");
+		this.nextSibling.getElementsByTagName("i")[0].className = "fa fa-spin fa-spinner";
+
+	}
 });
 
 
 document.getElementsByName("usernameSignUp")[0].addEventListener("blur", function(event){
 	if(this.value == ""){
 		this.nextSibling.getElementsByTagName("i")[0].className = "fa fa-asterisk";
+	}
+	else if(userAuth == true){
+		xmlhttp.open("POST", "/available");
+		xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		xmlhttp.send("username=" + this.value + "&check=username");
+		this.nextSibling.getElementsByTagName("i")[0].className = "fa fa-spin fa-spinner";
 	}
 });
 
@@ -114,7 +153,7 @@ document.getElementsByName("passwordSignIn")[0].addEventListener("blur", functio
 
 //PREVENTING FORM SUBMISSION IF FORM IS NOT VALIDATED
 document.getElementById("signUp").addEventListener("submit", function(event){
-	if(!emailAuth || !userAuth || !passAuth) {
+	if(!emailAuth || !userAuth || !passAuth || !emailAvail || !userAvail) {
 		event.preventDefault();
 	}
 }, false);
