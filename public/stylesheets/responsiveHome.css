@@ -1,0 +1,84 @@
+@media (max-width: 700px) {
+	.divTitle {
+		font-family: champagne;
+		color: white;
+		-webkit-transition: all 0.5s;
+		-moz-transition: all 0.5s;
+		transition: all 0.5s;
+		z-index: 20;
+		font-size: 0.8em;
+		padding: 5px 20px;
+		display: block;
+	}
+
+	.divTitle .spanQ {
+		font-size: 2em;
+	}
+
+	.divTitle .spanA {
+		font-size: 2em;
+	}
+
+	.divProfileMenu {
+		display: block;
+		top: 0px;
+		color: white;
+		font-size: 0.6em;
+		padding: 8px 0px;
+	}
+
+	#divBody {
+		width: 100%;
+		left: 0px;
+		margin: 0px;
+		padding-top: 15%;
+	}
+
+	textarea {
+		width: 90%;
+	}
+}
+
+@media (max-width: 350px){
+	.divTitle {
+		font-family: champagne;
+		color: white;
+		-webkit-transition: all 0.5s;
+		-moz-transition: all 0.5s;
+		transition: all 0.5s;
+		z-index: 20;
+		font-size: 0.5em;
+		padding: 5px 10px;
+		display: block;
+	}
+
+	.divTitle .spanQ {
+		font-size: 1em;
+	}
+
+	.divTitle .spanA {
+		font-size: 1em;
+	}
+
+	.divProfileMenu {
+		display: block;
+		top: 0px;
+		color: white;
+		font-size: 0.4em;
+		padding: 0px 0px;
+	}
+
+	#divBody {
+		width: 100%;
+		left: 0px;
+		margin: 0px;
+	}
+
+	.divBackMenu {
+		height: 1px;
+	}
+
+	.divProfilePic {
+		padding: 3px 5px;
+	}
+}

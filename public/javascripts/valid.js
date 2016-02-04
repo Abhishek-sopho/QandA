@@ -163,3 +163,10 @@ document.getElementById("signIn").addEventListener("submit", function(event){
 		event.preventDefault();
 	}
 }, false);
+
+window.addEventListener("load", function(){
+	if(document.getElementsByName("usernameSignIn")[0].value != ""){
+		userAuthIn = true;
+		document.getElementsByName("usernameSignIn")[0].nextSibling.getElementsByTagName("i")[0].className = "fa fa-check-circle";
+	}
+})

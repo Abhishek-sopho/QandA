@@ -44,7 +44,11 @@
 				</div>
 
 				<div id = "divFormChange">
-					Don't  have  an  account <span id = "spanTextForm"> Create an account </span>
+					Don't  have  an  account <span id = "spanTextForm"> Create an account</span><br>
+					<% if(form == "signIn"){ %>
+					<%= content %>
+					<% } %>
+
 				</div>
 
 				<div class = "divSignUp">
@@ -77,6 +81,11 @@
 			Copyright Protected &nbsp;<span class = "copyright">&copy;</span>&nbsp; Saurabh Kumar<br>
 		</div>
 
+		<script>
+			var contentToDisplay = "<%= content %>"
+			var form = "<%= form %>"
+			document.getElementsByName("usernameSignIn")[0].value = "<%= user %>";
+		</script>
 		<script src = "/javascripts/bodySlide.js">	</script>
 		<script src = "/javascripts/formChange.js">	</script>
 		<script src = "/javascripts/valid.js">	</script>

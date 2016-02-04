@@ -1,13 +1,20 @@
 
 var mongoClient = require('mongodb').MongoClient,
-	bcrypt = require('bcrypt');
+	bcrypt = require('bcrypt'), availabe = true;
 
 exports.index = function(req, res){
 	if(req.session.user){
 		res.redirect("/home");
 	}
 	else{
-		res.render("index");
+		if(!req.session.content){
+			res.render("index", {"content": true, "form": req.session.form, "user": ""});
+			req.session.destroy();
+		}
+		else{
+			res.render("index", {"content": req.session.content, "form": req.session.form, "user": req.session.userError});
+			req.session.destroy();
+		}
 	}
 }
 
@@ -45,7 +52,9 @@ exports.signUp = function(req, res){
 
 						else {
 							db.close();
-							res.end("Sorry Username Already taken");
+							req.session.content = "Usrname already Taken!";
+							req.session.form = "signUp";
+							res.redirect("/")
 						}
 					});
 				});
@@ -69,7 +78,10 @@ exports.signIn = function(req, res){
 			db.collection('users').find({"username": user.username}).count(function(err, count){
 				if(count == 0){
 					db.close();
-					res.end("Sorry Wrong Username or Password");
+					req.session.content = "Wrong Username or Password!";
+					req.session.form = "signIn";
+					req.session.userError = user.username;
+					res.redirect("/")
 				}
 
 				else {
@@ -86,8 +98,12 @@ exports.signIn = function(req, res){
 										res.redirect("/home");
 										db.close();
 									}
-									else
-										res.end("Sorry wrong username or password");
+									else {
+										req.session.content = "Wrong Username or Password!";
+										req.session.form = "signIn";
+										req.session.userError = user.username;
+										res.redirect("/")
+									}
 									db.close();
 								});
 							}

@@ -9,16 +9,22 @@ var span = document.getElementById("divFormChange"),
 span.addEventListener("click", function(){
 	count++;
 	if(count == 1) {
-		signUp.className = "divSignUp signUpStage2"
-		signIn.className = "divSignIn signInStage2"
-		span.innerHTML = "Already  have  an  account <span id = 'spanTextForm'> Log In </span>";
+		signUp.className = "divSignUp signUpStage2";
+		signIn.className = "divSignIn signInStage2";
+		if(form == "signUp")
+			span.innerHTML = "Already  have  an  account <span id = 'spanTextForm'> Log In </span><br>" + contentToDisplay;
+		else
+			span.innerHTML = "Already  have  an  account <span id = 'spanTextForm'> Log In </span>";
 	}
 
 	if(count == 2) {
 		count = 0;
 		signUp.className = "divSignUp"
 		signIn.className = "divSignIn"
-		span.innerHTML = "Don't  have  an  account <span id = 'spanTextForm'> Create an account </span>";
+		if (form == "signIn")
+			span.innerHTML = "Don't  have  an  account <span id = 'spanTextForm'> Create an account </span><br>" + contentToDisplay;
+		else
+			span.innerHTML = "Don't  have  an  account <span id = 'spanTextForm'> Create an account </span>";
 	}
 
 }, false);

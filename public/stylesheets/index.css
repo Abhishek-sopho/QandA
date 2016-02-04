@@ -170,7 +170,7 @@ input[type = "submit"]:focus {
 
 #divFormChange {
 	position: absolute;
-	bottom: 33%;
+	bottom: 31%;
 	font-size: 0.7em;
 	letter-spacing: 1px;
 	z-index: 10;
@@ -184,6 +184,8 @@ input[type = "submit"]:focus {
 #spanTextForm {
 	text-decoration: underline;
 	z-index: 10;
+	display: inline-block;
+	margin-bottom: 5px;
 }
 
 ::-webkit-input-placeholder {

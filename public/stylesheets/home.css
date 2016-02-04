@@ -3,6 +3,11 @@
 	src: url("/fonts/Champagne & Limousines Bold.ttf");
 }
 
+@font-face {
+	font-family: geoSans;
+	src: url("/fonts/GeosansLight.ttf");	
+}
+
 * {
 	margin: 0px;
 	padding: 0px;
@@ -34,26 +39,6 @@
 
 .divTitle .spanA {
 	font-size: 3em;
-}
-
-.divAccountLink {
-	color: white;
-	font-size: 1.5em;
-	padding: 5px 10px;
-	display: inline-block;
-	border: 1px solid white;
-	position: absolute;
-	top: 20%;
-	right: 3%;
-	cursor: pointer;
-	-webkit-transition: all 0.2s;
-	-moz-transition: all 0.2s;
-	transition: all 0.2s;
-}
-
-.divAccountLink:hover {
-	color: rgba(134, 45, 45, 1);
-	background-color: white;
 }
 
 .divProfileMenu {
@@ -110,4 +95,97 @@
 
 .divProfileMenu ul li:hover .divBackMenu {
   width: 100%;
+}
+
+.divProfilePic {
+	margin-left: 5%;
+	padding: 5px 10px;
+	border: 1px solid white;
+	cursor: pointer;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3;
+	transition: all 0.3s;
+}
+
+.divProfilePic:hover {
+	background-color: white;
+	color:  rgba(134, 45, 45, 1);
+}
+
+#divBody {
+	width: 70%;
+	padding: 0px 20px;
+	padding-top: 10%;
+	top: 10%;
+	background-color: #f2f2f2;
+	height: 1000px;
+	margin-left: 15%;
+	text-align: center;
+}
+
+form {
+	display: inline-block;
+	width: 80%;
+}
+
+textarea {
+	width: 80%;
+	height: 60px;
+	padding: 5px;
+	resize: none;
+	font-size: 1em;
+	font-family: geoSans;
+	font-weight: bold;
+}
+
+textarea:focus {
+	outline: none;
+	border: 1px solid rgba(134, 45, 45, 1);
+}
+
+input[type = "submit"]{
+	color: white;
+	border: none;
+	background-color: rgba(134, 45, 45, 1);
+	width: 15%;
+	height: 30px;
+	font-family: geoSans;
+	font-size: bold;
+	margin: 5px 10px;
+	-webkit-transition: all 400ms;
+	-moz-transition: all 400ms;
+	transition: all 400ms;
+}
+
+input[type = "submit"]:hover{
+	background-color: rgba(134, 45, 45, 0.8);
+}
+
+input[type = "submit"]:focus{
+	background-color: rgba(134, 45, 45, 0.8);
+	box-shadow: none;
+	outline: none;
+}
+
+input[type = "reset"]{
+	color: white;
+	border: none;
+	background-color: rgba(134, 45, 45, 1);
+	width: 15%;
+	height: 30px;
+	font-family: geoSans;
+	font-size: bold;
+	-webkit-transition: all 400ms;
+	-moz-transition: all 400ms;
+	transition: all 400ms;
+}
+
+input[type = "reset"]:hover{
+	background-color: rgba(134, 45, 45, 0.8);
+}
+
+input[type = "reset"]:focus{
+	background-color: rgba(134, 45, 45, 0.8);
+	box-shadow: none;
+	outline: none;
 }
