@@ -169,7 +169,7 @@ exports.like = function(req, res){
 		if(err)
 			res.send("" + false);
 		else {
-			db.collection("posts").update({"_id": id}, {$inc: {likes: 1}}, function(err, result){
+			db.collection("posts").update({"_id": id}, {$inc: {likes: 1}, $push: {likedBy: req.session.user}}, function(err, result){
 				if(err){
 					db.close();
 					res.send("" + false)
@@ -197,7 +197,63 @@ exports.unlike = function(req, res){
 		if(err)
 			res.send("" + false);
 		else {
-			db.collection("posts").update({"_id": id}, {$inc: {unlikes: 1}}, function(err, result){
+			db.collection("posts").update({"_id": id}, {$inc: {unlikes: 1}, $push: {unlikedBy: req.session.user}}, function(err, result){
+				if(err){
+					db.close();
+					res.send("" + false)
+				}
+				else{
+					var cursor = db.collection("posts").find({"_id": id});
+					cursor.each(function(err, doc){
+						if(doc!=null){
+							res.send({"unlikes": doc.unlikes});
+						}
+						else {
+							db.close();
+						}
+					})
+				}
+			});
+			
+		}
+	});
+}
+
+exports.removelike = function(req, res){
+	var id = req.body.id;
+	mongoClient.connect("mongodb://127.0.0.1:27017/testLogin", function(err, db){
+		if(err)
+			res.send("" + false);
+		else {
+			db.collection("posts").update({"_id": id}, {$pull: {"likedBy": req.session.user}, $inc: {"likes": -1}}, function(err, result){
+				if(err){
+					db.close();
+					res.send("" + false)
+				}
+				else{
+					var cursor = db.collection("posts").find({"_id": id});
+					cursor.each(function(err, doc){
+						if(doc!=null){
+							res.send({"likes" : doc.likes});
+						}
+						else {
+							db.close();
+						}
+					})
+				}
+			});
+			
+		}
+	});
+}
+
+exports.removeunlike = function(req, res){
+	var id = req.body.id;
+	mongoClient.connect("mongodb://127.0.0.1:27017/testLogin", function(err, db){
+		if(err)
+			res.send("" + false);
+		else {
+			db.collection("posts").update({"_id": id}, {$inc: {unlikes: -1}, $pull: {unlikedBy: req.session.user}}, function(err, result){
 				if(err){
 					db.close();
 					res.send("" + false)

@@ -28,8 +28,16 @@
 					Posted by <b><%= posts[x].author %></b> on <b><%= posts[x].date %></b>
 				</div>
 				<div class = "otherDetails">
-					<div class = "noOfLikes"><i class = "fa fa-thumbs-o-up"></i><%= posts[x].likes %></div>
-					<div class = "noOfUnLikes"><i class = "fa fa-thumbs-o-down"></i><%= posts[x].unlikes %></div>
+				<% if((posts[x].likedBy).indexOf(user) != -1) { %>
+					<div class = "noOfLikes noOfLiked"><i class = "fa fa-thumbs-o-up"></i><%= posts[x].likes %></div><div class = "noOfUnLikes noOfUnLikesNotAllow"><i class = "fa fa-thumbs-o-down"></i><%= posts[x].unlikes %></div>
+				<% }else {%>
+					<% if((posts[x].unlikedBy).indexOf(user) != -1) { %>
+						<div class = "noOfLikes noOfLikesNotAllow"><i class = "fa fa-thumbs-o-up"></i><%= posts[x].likes %></div><div class = "noOfUnLikes noOfUnLiked"><i class = "fa fa-thumbs-o-down"></i><%= posts[x].unlikes %></div>
+					<% } else { %>
+						<div class = "noOfLikes"><i class = "fa fa-thumbs-o-up"></i><%= posts[x].likes %></div><div class = "noOfUnLikes"><i class = "fa fa-thumbs-o-down"></i><%= posts[x].unlikes %></div>
+					<% } %>
+				<% } %>
+					
 				</div>
 				<div class = "divAnswers">
 					<% if(posts[x].comments.length == 0) {%>

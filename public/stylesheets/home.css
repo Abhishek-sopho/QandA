@@ -226,10 +226,37 @@ input[type = "reset"]:focus{
 	font-family: champagne;
 	display: inline-block;
 	padding: 2px 5px;
-	border: 1px solid rgba(134, 45, 45, 1);;
+	border: 1px solid rgba(134, 45, 45, 1);
 	margin-top: 5px;
 	cursor: pointer;
 	color: rgba(134, 45, 45, 1);
+	-webkit-transition: all 300ms;
+	-moz-transition: all 300ms;
+	transition: all 300ms;
+}
+
+.noOfLiked {
+	font-family: champagne;
+	display: inline-block;
+	padding: 2px 5px;
+	border: 1px solid rgba(134, 45, 45, 1);
+	margin-top: 5px;
+	cursor: pointer;
+	color: white;
+	background-color: rgba(134, 45, 45, 1);
+	-webkit-transition: all 300ms;
+	-moz-transition: all 300ms;
+	transition: all 300ms;
+}
+
+.noOfLikesNotAllow {
+	font-family: champagne;
+	display: inline-block;
+	padding: 2px 5px;
+	border: 1px solid rgba(134, 45, 45, 0.2);
+	margin-top: 5px;
+	cursor: pointer;
+	color: rgba(134, 45, 45, 0.2);
 	-webkit-transition: all 300ms;
 	-moz-transition: all 300ms;
 	transition: all 300ms;
@@ -239,19 +266,45 @@ input[type = "reset"]:focus{
 	margin-right: 5px;
 }
 
+.noOfLikesNotAllow i {
+	margin-right: 5px;
+}
+
+.noOfLiked i {
+	margin-right: 5px;
+}
+
 .noOfLikes:hover {
-	background-color: rgba(134, 45, 45, 1);;
+	background-color: rgba(134, 45, 45, 1);
 	color: white;
+}
+
+.noOfLikesNotAllow:hover {
+	background-color: transparent;
+	color: rgba(134, 45, 45, 0.2);
 }
 
 .noOfUnLikes {
 	font-family: champagne;
 	display: inline-block;
 	padding: 2px 5px;
-	border: 1px solid rgba(134, 45, 45, 1);;
+	border: 1px solid rgba(134, 45, 45, 1);
 	margin-top: 5px;
 	cursor: pointer;
 	color: rgba(134, 45, 45, 1);
+	-webkit-transition: all 300ms;
+	-moz-transition: all 300ms;
+	transition: all 300ms;
+}
+
+.noOfUnLikesNotAllow {
+	font-family: champagne;
+	display: inline-block;
+	padding: 2px 5px;
+	border: 1px solid rgba(134, 45, 45, 0.2);
+	margin-top: 5px;
+	cursor: pointer;
+	color: rgba(134, 45, 45, 0.2);
 	-webkit-transition: all 300ms;
 	-moz-transition: all 300ms;
 	transition: all 300ms;
@@ -261,9 +314,35 @@ input[type = "reset"]:focus{
 	margin-right: 5px;
 }
 
+.noOfUnLikesNotAllow i {
+	margin-right: 5px;
+}
+
 .noOfUnLikes:hover {
-	background-color: rgba(134, 45, 45, 1);;
+	background-color: rgba(134, 45, 45, 1);
 	color: white;
+}
+
+.noOfUnLikesNotAllow:hover {
+	background-color: transparent;
+	color: rgba(134, 45, 45, 0.2);
+}
+
+.noOfUnLiked {
+	font-family: champagne;
+	display: inline-block;
+	padding: 2px 5px;
+	border: 1px solid rgba(134, 45, 45, 1);
+	margin-top: 5px;
+	cursor: pointer;
+	color: white;
+	background-color: rgba(134, 45, 45, 1);
+	-webkit-transition: all 300ms;
+	-moz-transition: all 300ms;
+	transition: all 300ms;
+}
+.noOfUnLiked i {
+	margin-right: 5px;
 }
 
 .otherDetails {

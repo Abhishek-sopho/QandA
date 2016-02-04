@@ -16,7 +16,7 @@ exports.showQues = function(req, res){
 				}
 				if(doc == null){
 					db.close();
-					res.render("home", {"posts": allPosts});
+					res.render("home", {"posts": allPosts, "user": req.session.user});
 				}
 			});
 		}

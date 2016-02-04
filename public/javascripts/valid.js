@@ -94,7 +94,7 @@ document.getElementsByName("usernameSignUp")[0].addEventListener("blur", functio
 	}
 	else if(userAuth == true){
 		xmlhttp.open("POST", "/available");
-		xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");	
 		xmlhttp.send("username=" + this.value + "&check=username");
 		this.nextSibling.getElementsByTagName("i")[0].className = "fa fa-spin fa-spinner";
 	}
