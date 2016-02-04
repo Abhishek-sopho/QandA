@@ -40,6 +40,14 @@ app.post("/available", function(req, res){
 	route.available(req, res);
 });
 
+app.post("/like", function(req, res){
+	route.like(req, res);
+})
+
+app.post("/unlike", function(req, res){
+	route.unlike(req, res);
+})
+
 app.use(express.static(__dirname + "/public"));
 
 // This must be last one otherwise it will route any other requests

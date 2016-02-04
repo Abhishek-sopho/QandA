@@ -1,6 +1,7 @@
 
 var mongoClient = require('mongodb').MongoClient,
-	bcrypt = require('bcrypt'), availabe = true;
+	bcrypt = require('bcrypt'), availabe = true,
+	show = require("./showPosts");
 
 exports.index = function(req, res){
 	if(req.session.user){
@@ -40,6 +41,7 @@ exports.signUp = function(req, res){
 							db.collection('users').insertOne(user, function(err, result){
 								if(err){
 									res.end("OH CRAP!!! SOME INTERNAL ERROR");
+									db.close();
 								}
 
 								else {
@@ -89,6 +91,7 @@ exports.signIn = function(req, res){
 					cursor.each(function(err, doc){
 						if(err){
 							res.end("Some internal error!");
+							db.close();
 						}
 						else {
 							if(doc != null){
@@ -102,9 +105,9 @@ exports.signIn = function(req, res){
 										req.session.content = "Wrong Username or Password!";
 										req.session.form = "signIn";
 										req.session.userError = user.username;
-										res.redirect("/")
+										res.redirect("/");
+										db.close();
 									}
-									db.close();
 								});
 							}
 							else {
@@ -119,8 +122,9 @@ exports.signIn = function(req, res){
 };
 
 exports.home = function(req, res){
-	if(req.session.user)
-		res.render("home", {"user": req.session.user});
+	if(req.session.user){
+		show.showQues(req, res);
+	}
 	else
 		res.redirect("/");
 };
@@ -155,6 +159,62 @@ exports.available = function(req, res){
 					db.close();
 				}
 			});
+		}
+	});
+}
+
+exports.like = function(req, res){
+	var id = req.body.id;
+	mongoClient.connect("mongodb://127.0.0.1:27017/testLogin", function(err, db){
+		if(err)
+			res.send("" + false);
+		else {
+			db.collection("posts").update({"_id": id}, {$inc: {likes: 1}}, function(err, result){
+				if(err){
+					db.close();
+					res.send("" + false)
+				}
+				else{
+					var cursor = db.collection("posts").find({"_id": id});
+					cursor.each(function(err, doc){
+						if(doc!=null){
+							res.send({"likes" : doc.likes});
+						}
+						else {
+							db.close();
+						}
+					})
+				}
+			});
+			
+		}
+	});
+}
+
+exports.unlike = function(req, res){
+	var id = req.body.id;
+	mongoClient.connect("mongodb://127.0.0.1:27017/testLogin", function(err, db){
+		if(err)
+			res.send("" + false);
+		else {
+			db.collection("posts").update({"_id": id}, {$inc: {unlikes: 1}}, function(err, result){
+				if(err){
+					db.close();
+					res.send("" + false)
+				}
+				else{
+					var cursor = db.collection("posts").find({"_id": id});
+					cursor.each(function(err, doc){
+						if(doc!=null){
+							res.send({"unlikes": doc.unlikes});
+						}
+						else {
+							db.close();
+						}
+					})
+				}
+			});
+			
 		}
 	});
 }

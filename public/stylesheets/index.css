@@ -3,6 +3,11 @@
 	src: url("/fonts/Champagne & Limousines Bold.ttf");
 }
 
+@font-face {
+	font-family: geoSans;
+	src: url("/fonts/GeosansLight.ttf");
+}
+
 * {
 	margin: 0px;
 	padding: 0px;
@@ -162,12 +167,6 @@ input[type = "submit"]:hover {
 	transform: scale(1.1, 1.1);
 }
 
-input[type = "submit"]:focus {
-	-webkit-transform: scale(1.1, 1.1);
-	-moz-transform: scale(1.1, 1.1);
-	transform: scale(1.1, 1.1);
-}
-
 #divFormChange {
 	position: absolute;
 	bottom: 31%;
@@ -186,6 +185,7 @@ input[type = "submit"]:focus {
 	z-index: 10;
 	display: inline-block;
 	margin-bottom: 5px;
+	cursor: pointer;
 }
 
 ::-webkit-input-placeholder {
@@ -438,7 +438,7 @@ label {
 	height: 30%;
 	position: absolute;
 	color: white;
-	font-family: champagne;
+	font-family: geoSans;
 	-webkit-transition: left 0.5s;
 	-moz-transition: all 0.5s;
 	transition: all 0.5s;

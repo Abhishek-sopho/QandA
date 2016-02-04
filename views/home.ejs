@@ -11,10 +11,35 @@
 	<body>
 		<% include ./Partials/header.ejs %>
 		<div id = "divBody">
-			<form action = "#" method = "POST">
+			<!--<form action = "#" method = "POST">
 				<textarea name = "data2post" placeholder = "Ask or Say something.."></textarea><br>
 				<input type = "submit" value = "Post">
 				<input type = "reset" value = "Clear">
+			</form>--!>
+			<br>
+			
+			<% for(x in posts){ %>	
+			<div class = "divQues">
+				<input type = "hidden" value = "<%= posts[x]._id %>" >
+				<div class = "postStatement">
+					<%= posts[x].post %>
+				</div>
+				<div class = "authorDetails">
+					Posted by <b><%= posts[x].author %></b> on <b><%= posts[x].date %></b>
+				</div>
+				<div class = "otherDetails">
+					<div class = "noOfLikes"><i class = "fa fa-thumbs-o-up"></i><%= posts[x].likes %></div>
+					<div class = "noOfUnLikes"><i class = "fa fa-thumbs-o-down"></i><%= posts[x].unlikes %></div>
+				</div>
+				<div class = "divAnswers">
+					<% if(posts[x].comments.length == 0) {%>
+						<span class = "noAnswer"> No Answer Yet </span>
+					<% } %>
+				</div>
+			</div>
+			<% } %>
 		</div>
+
+		<script src = "/javascripts/likeUnlike.js">	</script>
 	</body>
 </html>
