@@ -11,13 +11,14 @@
 	<body>
 		<% include ./Partials/header.ejs %>
 		<div id = "divBody">
-			<!--<form action = "#" method = "POST">
-				<textarea name = "data2post" placeholder = "Ask or Say something.."></textarea><br>
-				<input type = "submit" value = "Post">
-				<input type = "reset" value = "Clear">
-			</form>--!>
-			<br>
-			
+			<div class = "divPostForm">
+				<form action = "#" method = "POST" class = "formPost">
+					<textarea class = "textToPost" placeholder = "Ask or Say something..." name = "textToPost"></textarea><br>
+					<input type = "submit" value = "Post" class = "submitPost">
+					<input type = "reset" value = "Clear" class = "clearPost">
+				</form>
+			</div>
+
 			<% for(x in posts){ %>	
 			<div class = "divQues">
 				<input type = "hidden" value = "<%= posts[x]._id %>" >
@@ -41,7 +42,7 @@
 				</div>
 				<div class = "divAnswers">
 					<% if(posts[x].comments.length == 0) {%>
-						<span class = "noAnswer"> No Answer Yet </span>
+						<span class = "noAnswer"> No Answers/Comments Yet </span>
 					<% } %>
 				</div>
 			</div>
@@ -49,5 +50,6 @@
 		</div>
 
 		<script src = "/javascripts/likeUnlike.js">	</script>
+		<script src = "/javascripts/postData.js"> </script>
 	</body>
 </html>

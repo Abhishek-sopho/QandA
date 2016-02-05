@@ -274,3 +274,36 @@ exports.removeunlike = function(req, res){
 		}
 	});
 }
+
+exports.post = function(req, res){
+	mongoClient.connect("mongodb://127.0.0.1:27017/testLogin", function(err, db){
+		if(err){
+			res.send("" + false);
+		}
+
+		else {
+			var post = {
+				"_id": Math.floor((Math.random()*99999999999) + 11111111111111) + "",
+				"post": req.body.data,
+				"date": req.body.time,
+				"author": req.session.user,
+				"likes": 0,
+				"unlikes": 0,
+				"likedBy": [],
+				"unlikedBy": [],
+				"comments": []
+			}
+			db.collection("posts").insertOne(post, function(err, r){
+				if(err){
+					console.log("Unable to POST!! " + err);
+					db.close();
+				}
+
+				else {
+					res.send("Success");
+					db.close();
+				}
+			})
+		}
+	})
+}

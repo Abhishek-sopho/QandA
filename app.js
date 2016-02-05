@@ -56,6 +56,10 @@ app.post("/removeLike", function(req, res){
 	route.removelike(req, res);
 })
 
+app.post("/post", function(req, res){
+	route.post(req, res);
+})
+
 app.use(express.static(__dirname + "/public"));
 
 // This must be last one otherwise it will route any other requests

@@ -46,13 +46,13 @@ function callLike(req, res){
 	if(this.className == "noOfLikes"){
 		xmlHttp.open("POST", "/like");
 		xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-		xmlHttp.send("id=" + id);
+		xmlHttp.send("id=" + String(id));
 	}
 
 	else if(this.className == "noOfLikes noOfLiked"){
 		xmlHttp.open("POST", "/removeLike");
 		xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-		xmlHttp.send("id=" + id);
+		xmlHttp.send("id=" + String(id));
 	}
 }
 
@@ -62,12 +62,12 @@ function callUnLike(req, res){
 	if(this.className == "noOfUnLikes"){
 		xmlHttp.open("POST", "/unlike");
 		xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-		xmlHttp.send("id=" + id);
+		xmlHttp.send("id=" + String(id));
 	}
 
 	else if(this.className == "noOfUnLikes noOfUnLiked"){
 		xmlHttp.open("POST", "/removeUnLike");
 		xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-		xmlHttp.send("id=" + id);
+		xmlHttp.send("id=" + String(id));
 	}
 }

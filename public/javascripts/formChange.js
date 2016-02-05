@@ -8,6 +8,7 @@ var span = document.getElementById("divFormChange"),
 
 span.addEventListener("click", function(){
 	count++;
+	console.log(count)
 	if(count == 1) {
 		signUp.className = "divSignUp signUpStage2";
 		signIn.className = "divSignIn signInStage2";
