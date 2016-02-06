@@ -307,3 +307,11 @@ exports.post = function(req, res){
 		}
 	})
 }
+
+exports.getPosts = function(req, res){
+	if(req.session.user){
+		show.showPostsOnFly(req, res);
+	}
+	else
+		res.redirect("/");
+}

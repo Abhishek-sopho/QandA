@@ -22,11 +22,13 @@
 			<% for(x in posts){ %>	
 			<div class = "divQues">
 				<input type = "hidden" value = "<%= posts[x]._id %>" >
+				<input type = "hidden" value = "<%= posts[x].date %>" >
 				<div class = "postStatement">
 					<%= posts[x].post %>
 				</div>
 				<div class = "authorDetails">
-					Posted by <b><%= posts[x].author %></b> on <b><%= posts[x].date %></b>
+					<% var date = new Date(Number(posts[x].date)) %>
+					Posted by <b><%= posts[x].author %></b> on <b><%= date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear() + " at " + date.getHours() + ":" + date.getMinutes() %></b>
 				</div>
 				<div class = "otherDetails">
 				<% if((posts[x].likedBy).indexOf(user) != -1) { %>
@@ -48,7 +50,7 @@
 			</div>
 			<% } %>
 		</div>
-
+		<script>var username = "<%= user %>";</script>
 		<script src = "/javascripts/likeUnlike.js">	</script>
 		<script src = "/javascripts/postData.js"> </script>
 	</body>

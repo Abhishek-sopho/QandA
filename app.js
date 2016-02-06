@@ -60,6 +60,10 @@ app.post("/post", function(req, res){
 	route.post(req, res);
 })
 
+app.post("/getPostsOnFly", function(req, res){
+	route.getPosts(req, res);
+})
+
 app.use(express.static(__dirname + "/public"));
 
 // This must be last one otherwise it will route any other requests
