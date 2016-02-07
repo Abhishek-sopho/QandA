@@ -28,6 +28,7 @@ getData.onreadystatechange = function(){
 	if(getData.readyState == 4){
 		var res = JSON.parse(getData.responseText).newPosts;
 		appendPost(res);
+		appendLikesAndUnlikes(JSON.parse(getData.responseText).likes);
 		setTimeout(getPosts, 5000);
 	}
 };
@@ -70,7 +71,7 @@ function appendPost(res){
 				var contentComment = '<div class = "divAnswers"><span class = "noAnswer"> No Answers/Comments Yet </span></div>';
 			}
 
-			var contentHidden = '<input type = "hidden" value = "' + res[x]._id + '">\n<input type = "hidden" value = "' + res[x].date + '">',
+			var contentHidden = '<input type = "hidden" value = "' + res[x]._id + '" class = "' + res[x]._id + '">\n<input type = "hidden" value = "' + res[x].date + '">',
 				contentPost = '<div class = "postStatement"> ' + res[x].post + '</div>',
 				contentAuthor = '<div class = "authorDetails">Posted By <b>' + res[x].author + '</b> on <b>' + date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' at ' + date.getHours() + ':' + date.getMinutes() + '</b></div>';
 
@@ -79,4 +80,12 @@ function appendPost(res){
 			document.getElementsByClassName("noOfLikes")[0].addEventListener("click", callLike, false);
 			document.getElementsByClassName("noOfUnLikes")[0].addEventListener("click", callUnLike, false);
 		}
+}
+
+function appendLikesAndUnlikes(res){
+	for(var x in res){
+		var parent = document.getElementsByClassName(res[x]._id)[0].parentNode;
+		parent.getElementsByClassName("noOfLikes")[0].innerHTML = '<i class = "fa fa-thumbs-o-up"></i>' + res[x].likes;
+		parent.getElementsByClassName("noOfUnLikes")[0].innerHTML = '<i class = "fa fa-thumbs-o-down"></i>' + res[x].unlikes;
+	}
 }

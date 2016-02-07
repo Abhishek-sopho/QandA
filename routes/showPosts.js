@@ -25,17 +25,17 @@ exports.showQues = function(req, res){
 
 exports.showPostsOnFly = function(req, res){
 	var latestDate = req.body.latestDate;
-	var newPosts = [];
+	var newPosts = [], likes = [];
 	mongoClient.connect("mongodb://127.0.0.1:27017/testLogin", function(err, db){
 		if(err){
-			res.send({"newPosts": newPosts});
+			res.send({"newPosts": newPosts, "likes": likes});
 		}
 
 		else {
 			var cursor = db.collection("posts").find({date: {$gt: String(latestDate)}});
 			cursor.each(function(err, doc){
 				if(err){
-					res.send({"newPosts": newPosts});
+					res.send({"newPosts": newPosts, "likes": likes});
 					db.close();
 				}
 
@@ -44,8 +44,22 @@ exports.showPostsOnFly = function(req, res){
 				}
 
 				else {
-					res.send({"newPosts": newPosts});
-					db.close();
+					cursor = db.collection("posts").find({date: {$lte :String(latestDate)}}).sort({"date": -1});
+					cursor.each(function(err, doc){
+						if(err){
+							res.send({"newPosts": newPosts, "likes": likes});
+							db.close();
+						}
+
+						else if(doc!=null){
+							likes.push({"_id": doc._id, "likes": doc.likes, "unlikes": doc.unlikes});
+						}
+
+						else {
+							res.send({"newPosts": newPosts, "likes": likes});
+							db.close();
+						}
+					});
 				}
 			})
 		}

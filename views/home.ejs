@@ -21,7 +21,7 @@
 
 			<% for(x in posts){ %>	
 			<div class = "divQues">
-				<input type = "hidden" value = "<%= posts[x]._id %>" >
+				<input type = "hidden" value = "<%= posts[x]._id %>" class = "<%= posts[x]._id %>" >
 				<input type = "hidden" value = "<%= posts[x].date %>" >
 				<div class = "postStatement">
 					<%= posts[x].post %>

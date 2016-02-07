@@ -3,7 +3,6 @@ var elem;
 
 xmlHttp.onreadystatechange = function(){
 	if(xmlHttp.readyState == 4) {
-		console.log("Yo");
 		var res = JSON.parse(xmlHttp.responseText);
 		if(res.likes + 1){
 			if(elem.className == "noOfLikes"){
