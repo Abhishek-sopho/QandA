@@ -54,7 +54,7 @@ exports.signUp = function(req, res){
 
 						else {
 							db.close();
-							req.session.content = "Usrname already Taken!";
+							req.session.content = "Username already Taken!";
 							req.session.form = "signUp";
 							res.redirect("/")
 						}
@@ -165,147 +165,177 @@ exports.available = function(req, res){
 
 exports.like = function(req, res){
 	var id = req.body.id;
-	mongoClient.connect("mongodb://127.0.0.1:27017/testLogin", function(err, db){
-		if(err)
-			res.send("" + false);
-		else {
-			db.collection("posts").update({"_id": id}, {$inc: {likes: 1}, $push: {likedBy: req.session.user}}, function(err, result){
-				if(err){
-					db.close();
-					res.send("" + false)
-				}
-				else{
-					var cursor = db.collection("posts").find({"_id": id});
-					cursor.each(function(err, doc){
-						if(doc!=null){
-							res.send({"likes" : doc.likes});
-						}
-						else {
-							db.close();
-						}
-					})
-				}
-			});
-			
-		}
-	});
+	if(req.session.user){
+		mongoClient.connect("mongodb://127.0.0.1:27017/testLogin", function(err, db){
+			if(err)
+				res.send("" + false);
+			else {
+				db.collection("posts").update({"_id": id}, {$inc: {likes: 1}, $push: {likedBy: req.session.user}}, function(err, result){
+					if(err){
+						db.close();
+						res.send("" + false)
+					}
+					else{
+						var cursor = db.collection("posts").find({"_id": id});
+						cursor.each(function(err, doc){
+							if(doc!=null){
+								res.send({"likes" : doc.likes});
+							}
+							else {
+								db.close();
+							}
+						})
+					}
+				});
+				
+			}
+		});
+	}
+
+	else {
+		res.send("" + false);
+	}
 }
 
 exports.unlike = function(req, res){
 	var id = req.body.id;
-	mongoClient.connect("mongodb://127.0.0.1:27017/testLogin", function(err, db){
-		if(err)
-			res.send("" + false);
-		else {
-			db.collection("posts").update({"_id": id}, {$inc: {unlikes: 1}, $push: {unlikedBy: req.session.user}}, function(err, result){
-				if(err){
-					db.close();
-					res.send("" + false)
-				}
-				else{
-					var cursor = db.collection("posts").find({"_id": id});
-					cursor.each(function(err, doc){
-						if(doc!=null){
-							res.send({"unlikes": doc.unlikes});
-						}
-						else {
-							db.close();
-						}
-					})
-				}
-			});
-			
-		}
-	});
+	if(req.session.user){
+		mongoClient.connect("mongodb://127.0.0.1:27017/testLogin", function(err, db){
+			if(err)
+				res.send("" + false);
+			else {
+				db.collection("posts").update({"_id": id}, {$inc: {unlikes: 1}, $push: {unlikedBy: req.session.user}}, function(err, result){
+					if(err){
+						db.close();
+						res.send("" + false)
+					}
+					else{
+						var cursor = db.collection("posts").find({"_id": id});
+						cursor.each(function(err, doc){
+							if(doc!=null){
+								res.send({"unlikes": doc.unlikes});
+							}
+							else {
+								db.close();
+							}
+						})
+					}
+				});
+				
+			}
+		});
+	}
+
+	else {
+		res.send("" + false);
+	}
 }
 
 exports.removelike = function(req, res){
 	var id = req.body.id;
-	mongoClient.connect("mongodb://127.0.0.1:27017/testLogin", function(err, db){
-		if(err)
-			res.send("" + false);
-		else {
-			db.collection("posts").update({"_id": id}, {$pull: {"likedBy": req.session.user}, $inc: {"likes": -1}}, function(err, result){
-				if(err){
-					db.close();
-					res.send("" + false)
-				}
-				else{
-					var cursor = db.collection("posts").find({"_id": id});
-					cursor.each(function(err, doc){
-						if(doc!=null){
-							res.send({"likes" : doc.likes});
-						}
-						else {
-							db.close();
-						}
-					})
-				}
-			});
-			
-		}
-	});
+	if(req.session.user){
+		mongoClient.connect("mongodb://127.0.0.1:27017/testLogin", function(err, db){
+			if(err)
+				res.send("" + false);
+			else {
+				db.collection("posts").update({"_id": id}, {$pull: {"likedBy": req.session.user}, $inc: {"likes": -1}}, function(err, result){
+					if(err){
+						db.close();
+						res.send("" + false)
+					}
+					else{
+						var cursor = db.collection("posts").find({"_id": id});
+						cursor.each(function(err, doc){
+							if(doc!=null){
+								res.send({"likes" : doc.likes});
+							}
+							else {
+								db.close();
+							}
+						})
+					}
+				});
+				
+			}
+		});
+	}
+
+	else {
+		res.send("" + false);
+	}
 }
 
 exports.removeunlike = function(req, res){
 	var id = req.body.id;
-	mongoClient.connect("mongodb://127.0.0.1:27017/testLogin", function(err, db){
-		if(err)
-			res.send("" + false);
-		else {
-			db.collection("posts").update({"_id": id}, {$inc: {unlikes: -1}, $pull: {unlikedBy: req.session.user}}, function(err, result){
-				if(err){
-					db.close();
-					res.send("" + false)
-				}
-				else{
-					var cursor = db.collection("posts").find({"_id": id});
-					cursor.each(function(err, doc){
-						if(doc!=null){
-							res.send({"unlikes": doc.unlikes});
-						}
-						else {
-							db.close();
-						}
-					})
-				}
-			});
-			
-		}
-	});
+	if(req.session.user){
+		mongoClient.connect("mongodb://127.0.0.1:27017/testLogin", function(err, db){
+			if(err)
+				res.send("" + false);
+			else {
+				db.collection("posts").update({"_id": id}, {$inc: {unlikes: -1}, $pull: {unlikedBy: req.session.user}}, function(err, result){
+					if(err){
+						db.close();
+						res.send("" + false)
+					}
+					else{
+						var cursor = db.collection("posts").find({"_id": id});
+						cursor.each(function(err, doc){
+							if(doc!=null){
+								res.send({"unlikes": doc.unlikes});
+							}
+							else {
+								db.close();
+							}
+						})
+					}
+				});
+				
+			}
+		});
+	}
+
+	else {
+		res.send("" + false);
+	}
 }
 
 exports.post = function(req, res){
-	mongoClient.connect("mongodb://127.0.0.1:27017/testLogin", function(err, db){
-		if(err){
-			res.send("" + false);
-		}
-
-		else {
-			var post = {
-				"_id": Math.floor((Math.random()*99999999999) + 11111111111111) + "",
-				"post": req.body.data,
-				"date": req.body.time,
-				"author": req.session.user,
-				"likes": 0,
-				"unlikes": 0,
-				"likedBy": [],
-				"unlikedBy": [],
-				"comments": []
+	if(req.session.user){
+		mongoClient.connect("mongodb://127.0.0.1:27017/testLogin", function(err, db){
+			if(err){
+				res.send("" + false);
 			}
-			db.collection("posts").insertOne(post, function(err, r){
-				if(err){
-					console.log("Unable to POST!! " + err);
-					db.close();
+	
+			else {
+				var post = {
+					"_id": Math.floor((Math.random()*99999999999) + 11111111111111) + "",
+					"post": req.body.data,
+					"date": req.body.time,
+					"author": req.session.user,
+					"likes": 0,
+					"unlikes": 0,
+					"likedBy": [],
+					"unlikedBy": [],
+					"comments": []
 				}
+				db.collection("posts").insertOne(post, function(err, r){
+					if(err){
+						console.log("Unable to POST!! " + err);
+						db.close();
+					}
+	
+					else {
+						res.send("Success");
+						db.close();
+					}
+				})
+			}
+		});
+	}
 
-				else {
-					res.send("Success");
-					db.close();
-				}
-			})
-		}
-	})
+	else {
+		res.send("" + false);
+	}
 }
 
 exports.getPosts = function(req, res){
