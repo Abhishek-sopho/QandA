@@ -21,7 +21,7 @@ document.getElementsByClassName("formPost")[0].addEventListener("submit", functi
 
 
 // Updating Posts on the fly!
-// I will send AJAX request every 10 seconds
+// I will send AJAX request every 5 seconds
 // to fetch newer data that has been posted!
 
 getData.onreadystatechange = function(){
