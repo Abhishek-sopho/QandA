@@ -345,3 +345,25 @@ exports.getPosts = function(req, res){
 	else
 		res.redirect("/");
 }
+
+exports.addComment = function(req, res){
+	mongoClient.connect("mongodb://127.0.0.1:27017/testLogin", function(err, db){
+		if(err)
+			res.send("" + false);
+
+		else {
+			var comment = {
+				"commentPost": req.body.comment,
+				"commentAuthor": req.session.user,
+				"commentTime": req.body.time
+			}
+			db.collection("posts").update({"_id": req.body.postId}, {$push: {"comments": comment}}, function(err, result){
+				if(err)
+					res.send("" + false);
+				else
+					res.send("" + true);
+			});
+		}
+	});
+
+}

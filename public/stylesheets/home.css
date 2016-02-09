@@ -8,6 +8,11 @@
 	src: url("/fonts/GeosansLight.ttf");	
 }
 
+@font-face {
+	font-family: raleway;
+	src: url("/fonts/raleway.woff2");
+}
+
 * {
 	margin: 0px;
 	padding: 0px;
@@ -132,9 +137,10 @@
 }
 
 .postStatement {
-	font-family: champagne;
+	font-family: raleway;
 	font-size: 1.3em;
 	color: rgba(134, 45, 45, 1);
+	font-weight: bold;
 }
 
 .authorDetails {
@@ -153,7 +159,8 @@
 }
 
 .noAnswer {
-	
+	margin-bottom: 5px;
+	display: inline-block;
 }
 
 .noOfLikes {
@@ -371,4 +378,43 @@ input[type = "reset"]:focus{
 	-webkit-transition: all 0.5s;
 	-moz-transition: all 0.5s;
 	transition: all 0.5s;
+}
+
+.answers {
+	margin: 2% 0% 4% 0%;
+	font-family: 0.7em;
+}
+
+.answers .divAnswerAuthor {
+	font-family: champagne;
+	font-size: 1.2em;
+	display: inline-block;
+	color: rgba(135, 45, 45, 1);
+	margin-bottom: 5px;
+	font-weight: 500;
+}
+
+.answers .divAnswerAuthor i{
+	padding: 2px 5px;
+	display: inline-block;
+	border: 1px solid rgba(135, 45, 45, 1);
+	margin-right: 10px;
+	-webkit-transition: all 300ms;
+	-moz-transition: all 300ms;
+	transition: all 300ms;
+}
+
+.answers .divAnswerAuthor:hover {
+	text-decoration: underline;
+}
+
+.answers .divAnswerAuthor:hover i {
+	color: white;
+	background-color: rgba(135, 45, 45, 1);
+}
+
+.answers .divAnswerContent {
+	font-family: raleway;
+	font-size: 0.8em;
+	margin-left: 6%;
 }

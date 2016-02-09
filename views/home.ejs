@@ -44,14 +44,14 @@
 				</div>
 				<div class = "divAnswers">
 					<span class = "noAnswer"> <%= posts[x].comments.length %> Answers/Comments Yet </span>
-					<% for(var i in posts[x].comments.length) {%>
-						<div class = "answersAndComments">
-							<div class = "divAnswerTitle">	</div>
-							<div class = "divAnswerContent">	</div>
+					<% for(var i = 0; i<posts[x].comments.length; i++) {%>
+						<div class = "answers">
+							<div class = "divAnswerAuthor"><i class = "fa fa-user"></i><%= posts[x].comments[i].commentAuthor %></div>
+							<div class = "divAnswerContent"> <%= posts[x].comments[i].commentPost %></div>
 						</div>
 					<% } %>
 					<div class = "writeComment">
-						<form action = "#" action = "POST">
+						<form action = "#" action = "POST" class = "formAnswer">
 							<textarea class = "answerToPost" placeholder = "Comment or Answer..." name = "answerToPost"></textarea><br>
 							<input type = "submit" value = "Answer" class = "submitAnswer">
 							<input type = "reset" value = "Clear" class = "clearAnswer">

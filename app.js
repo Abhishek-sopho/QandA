@@ -1,7 +1,6 @@
 var express = require('express'),
 	http = require('http'),
 	path = require('path'),
-	io = require('socket.io')
 	route = require('./routes/route'),
 	bodyParser = require('body-parser'),
 	session = require('express-session');
@@ -62,6 +61,10 @@ app.post("/post", function(req, res){
 
 app.post("/getPostsOnFly", function(req, res){
 	route.getPosts(req, res);
+})
+
+app.post("/comment", function(req, res){
+	route.addComment(req, res);
 })
 
 app.use(express.static(__dirname + "/public"));
