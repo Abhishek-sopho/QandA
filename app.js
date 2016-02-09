@@ -67,6 +67,10 @@ app.post("/comment", function(req, res){
 	route.addComment(req, res);
 })
 
+app.post("/getAnswersOnFly", function(req, res){
+	route.getAnswersOnFly(req, res);
+})
+
 app.use(express.static(__dirname + "/public"));
 
 // This must be last one otherwise it will route any other requests

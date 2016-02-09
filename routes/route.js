@@ -347,23 +347,35 @@ exports.getPosts = function(req, res){
 }
 
 exports.addComment = function(req, res){
-	mongoClient.connect("mongodb://127.0.0.1:27017/testLogin", function(err, db){
-		if(err)
-			res.send("" + false);
+	if(req.session.user){
+		mongoClient.connect("mongodb://127.0.0.1:27017/testLogin", function(err, db){
+			if(err)
+				res.send("" + false);
 
-		else {
-			var comment = {
-				"commentPost": req.body.comment,
-				"commentAuthor": req.session.user,
-				"commentTime": req.body.time
+			else {
+				var comment = {
+					"commentPost": req.body.comment,
+					"commentAuthor": req.session.user,
+					"commentTime": req.body.time
+				}
+				db.collection("posts").update({"_id": String(req.body.postId)}, {$push: {"comments": comment}}, function(err, result){
+					if(err){
+						res.send("" + false);
+						db.close();
+					}
+					else{
+						res.send("" + true);
+						db.close();
+					}
+				});
 			}
-			db.collection("posts").update({"_id": req.body.postId}, {$push: {"comments": comment}}, function(err, result){
-				if(err)
-					res.send("" + false);
-				else
-					res.send("" + true);
-			});
-		}
-	});
+		});
+	}
+	else {
+		res.send("" + false);
+	}
+}
 
+exports.getAnswersOnFly = function(req, res){
+	show.getAnswers(req, res);
 }

@@ -10,7 +10,7 @@ function bringAnswers(event){
 }
 
 
-// Send Comment Data to server!!!!
+// Send Answers Data to server!!!!
 
 var answerHttp = new XMLHttpRequest();
 

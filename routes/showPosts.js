@@ -65,3 +65,28 @@ exports.showPostsOnFly = function(req, res){
 		}
 	});
 }
+
+exports.getAnswers = function(req, res){
+	var newComments = [];
+	mongoClient.connect("mongodb://127.0.0.1:27017/testLogin", function(err, db){
+		if(err)
+			res.send("" + false);
+		else {
+			var cursor = db.collection("posts").find({"_id": String(req.body.postId), "comments.commentTime": {$gt: String(req.body.lastComment)}});
+			cursor.each(function(err, doc){
+				if(err){
+					db.close();
+					res.send("" + false);
+				}
+
+				if(doc!=null){
+					newComments.push(doc);
+				}
+				else {
+					res.send({"newData": newComments});
+					db.close();
+				}
+			})
+		}
+	})
+}

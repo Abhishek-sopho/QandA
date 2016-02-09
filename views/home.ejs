@@ -46,6 +46,7 @@
 					<span class = "noAnswer"> <%= posts[x].comments.length %> Answers/Comments Yet </span>
 					<% for(var i = 0; i<posts[x].comments.length; i++) {%>
 						<div class = "answers">
+							<input type = "hidden" value = "<%= posts[x].comments[i].commentTime %>">
 							<div class = "divAnswerAuthor"><i class = "fa fa-user"></i><%= posts[x].comments[i].commentAuthor %></div>
 							<div class = "divAnswerContent"> <%= posts[x].comments[i].commentPost %></div>
 						</div>
@@ -63,6 +64,7 @@
 		</div>
 		<script>var username = "<%= user %>";</script>
 		<script src = "/javascripts/showAnswers.js"> </script>
+		<script src = "/javascripts/getData.js"> </script>
 		<script src = "/javascripts/likeUnlike.js">	</script>
 		<script src = "/javascripts/postData.js"> </script>
 	</body>
