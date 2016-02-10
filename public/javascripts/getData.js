@@ -54,20 +54,20 @@ function appendPost(res){
 			}
 
 			if(res[x].comments.length == 0){
-				var contentComment = '<div class = "divAnswers"><span class = "noAnswer"> No Answers/Comments Yet </span></div>';
+				var contentComment = '<div class = "divAnswers"><span class = "noAnswer"> No Answers/Comments Yet </span><';
 			}
 
 			var contentHidden = '<input type = "hidden" value = "' + res[x]._id + '" class = "' + res[x]._id + '">\n<input type = "hidden" value = "' + res[x].date + '">',
 				contentPost = '<div class = "postStatement"> ' + res[x].post + '</div>',
 				contentAuthor = '<div class = "authorDetails">Posted By <b>' + res[x].author + '</b> on <b>' + date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' at ' + date.getHours() + ':' + date.getMinutes() + '</b></div>',
-				writeComment = '<div class = "writeComment"><form action = "#" action = "POST" class = "formAnswer"><textarea class = "answerToPost" placeholder = "Comment or Answer..." name = "answerToPost"></textarea><br><input type = "submit" value = "Answer" class = "submitAnswer"><input type = "reset" value = "Clear" class = "clearAnswer"></form></div>';
+				writeComment = '<div class = "writeComment"><form action = "#" action = "POST" class = "formAnswer"><textarea class = "answerToPost" placeholder = "Comment or Answer..." name = "answerToPost"></textarea><br><input type = "submit" value = "Answer" class = "submitAnswer"><input type = "reset" value = "Clear" class = "clearAnswer"></form></div></div>';
 
 			div.innerHTML = contentHidden + contentPost + contentAuthor + contentLike + contentComment + writeComment;
 			div.addEventListener("click", bringAnswers, false);
-			div.getElementsByClassName("formAnswer")[0].addEventListener("submit", sendAnswerToServer, false);
 			document.getElementById("divBody").insertBefore(div, document.getElementsByClassName("divQues")[0]);
 			document.getElementsByClassName("noOfLikes")[0].addEventListener("click", callLike, false);
 			document.getElementsByClassName("noOfUnLikes")[0].addEventListener("click", callUnLike, false);
+			div.getElementsByClassName("formAnswer")[0].addEventListener("submit", sendAnswerToServer, false);
 		}
 }
 
