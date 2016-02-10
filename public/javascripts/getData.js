@@ -12,6 +12,7 @@ getData.onreadystatechange = function(){
 		var res = JSON.parse(getData.responseText).newPosts;
 		appendPost(res);
 		appendLikesAndUnlikes(JSON.parse(getData.responseText).likes);
+		appendComments(JSON.parse(getData.responseText).comments);
 		setTimeout(getPosts, 5000);
 	}
 };
@@ -63,6 +64,7 @@ function appendPost(res){
 
 			div.innerHTML = contentHidden + contentPost + contentAuthor + contentLike + contentComment + writeComment;
 			div.addEventListener("click", bringAnswers, false);
+			div.getElementsByClassName("formAnswer")[0].addEventListener("submit", sendAnswerToServer, false);
 			document.getElementById("divBody").insertBefore(div, document.getElementsByClassName("divQues")[0]);
 			document.getElementsByClassName("noOfLikes")[0].addEventListener("click", callLike, false);
 			document.getElementsByClassName("noOfUnLikes")[0].addEventListener("click", callUnLike, false);
@@ -77,43 +79,30 @@ function appendLikesAndUnlikes(res){
 	}
 }
 
-//Updating Answers/Comments
-getAns.onreadystatechange = function(){
-	if(getAns.readyState == 4){
-		appendNewAns(getAns.responseText);
-		countAns += 1;
-		setTimeout(getAnswers, 2000);
-	}
-};
+function appendComments(res){
+	var time;
+	for(var i = 0; i<res.length; i++){
+		var parent = document.getElementsByClassName(res[i]._id)[0].parentNode;
+		var answers = parent.getElementsByClassName("answers");
+		lastAnswer = answers[answers.length - 1];
 
-var countAns = 0;
-
-function getAnswers(){
-	var divQues = document.getElementsByClassName("divQues");
-		if(countAns > divQues.length - 1)
-			countAns = 0;
-		divQues = divQues[countAns];
-		postId = divQues.getElementsByTagName("input")[0].value;
-		ans = divQues.getElementsByClassName("divAnswers")[0].getElementsByClassName("answers");
-		len = ans.length;
-		if(len == 0)
-			ans = 0;
+		if(lastAnswer == undefined)
+			time = 0;
 		else
-			ans = ans[len - 1].getElementsByTagName("input")[0].value;
-	
-	getAns.open("POST", "/getAnswersOnFly");
-	getAns.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	getAns.send("postId=" + postId + "&lastComment=" + ans);
-}
-
-function appendNewAns(newAns){
-	newAns = (JSON.parse(newAns)).newData;
-	var elem = document.getElementsByClassName(newAns[i]._id)[0].parentNode;
-	
-	for(var i = 0; i < newAns.comments.length; i++){
-
-		var div = docment.createChild("div");
-		div.className = "answers";
-		div.innerHTML = "<input type = 'hidden' value = 'newAns[i].comments.'"
+			time = lastAnswer.getElementsByTagName("input")[0].value;
+		
+		for(var j = 0; j<res[i].comments.length; j++){
+			if(Number(res[i].comments[j].commentTime) > Number(time)){
+				var divAnswer = document.createElement("div");
+				divAnswer.className = "answers";
+				var input = '<input type = "hidden" value = "' + res[i].comments[j].commentTime + '">'
+				var author = '<div class = "divAnswerAuthor"><i class = "fa fa-user"></i>'+ res[i].comments[j].commentAuthor +'</div>'
+				var comment = '<div class = "divAnswerContent">' + res[i].comments[j].commentPost +'</div>';
+				divAnswer.innerHTML = input + author + comment;
+				var parentToBeAppended = parent.getElementsByClassName("divAnswers")[0];
+				parentToBeAppended.getElementsByClassName("noAnswer").innerHTML = res[i].comments.length + " Answers/Comments Yet";
+				parentToBeAppended.insertBefore(divAnswer, parentToBeAppended.getElementsByClassName("writeComment")[0]);
+			}
+		}
 	}
 }

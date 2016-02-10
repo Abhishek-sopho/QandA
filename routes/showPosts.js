@@ -25,17 +25,17 @@ exports.showQues = function(req, res){
 
 exports.showPostsOnFly = function(req, res){
 	var latestDate = req.body.latestDate;
-	var newPosts = [], likes = [];
+	var newPosts = [], likes = [], comments = [];
 	mongoClient.connect("mongodb://127.0.0.1:27017/testLogin", function(err, db){
 		if(err){
-			res.send({"newPosts": newPosts, "likes": likes});
+			res.send({"newPosts": newPosts, "likes": likes, "comments": comments});
 		}
 
 		else {
 			var cursor = db.collection("posts").find({date: {$gt: String(latestDate)}});
 			cursor.each(function(err, doc){
 				if(err){
-					res.send({"newPosts": newPosts, "likes": likes});
+					res.send({"newPosts": newPosts, "likes": likes, "comments": comments});
 					db.close();
 				}
 
@@ -47,16 +47,17 @@ exports.showPostsOnFly = function(req, res){
 					cursor = db.collection("posts").find({date: {$lte :String(latestDate)}}).sort({"date": -1});
 					cursor.each(function(err, doc){
 						if(err){
-							res.send({"newPosts": newPosts, "likes": likes});
+							res.send({"newPosts": newPosts, "likes": likes, "comments": comments});
 							db.close();
 						}
 
 						else if(doc!=null){
 							likes.push({"_id": doc._id, "likes": doc.likes, "unlikes": doc.unlikes});
+							comments.push({"_id": doc._id, "comments": doc.comments});
 						}
 
 						else {
-							res.send({"newPosts": newPosts, "likes": likes});
+							res.send({"newPosts": newPosts, "likes": likes, "comments": comments});
 							db.close();
 						}
 					});
@@ -64,29 +65,4 @@ exports.showPostsOnFly = function(req, res){
 			})
 		}
 	});
-}
-
-exports.getAnswers = function(req, res){
-	var newComments = [];
-	mongoClient.connect("mongodb://127.0.0.1:27017/testLogin", function(err, db){
-		if(err)
-			res.send("" + false);
-		else {
-			var cursor = db.collection("posts").find({"_id": String(req.body.postId), "comments.commentTime": {$gt: String(req.body.lastComment)}});
-			cursor.each(function(err, doc){
-				if(err){
-					db.close();
-					res.send("" + false);
-				}
-
-				if(doc!=null){
-					newComments.push(doc);
-				}
-				else {
-					res.send({"newData": newComments});
-					db.close();
-				}
-			})
-		}
-	})
 }

@@ -16,7 +16,7 @@ var answerHttp = new XMLHttpRequest();
 
 answerHttp.onreadystatechange = function(){
 	if(answerHttp.readyState == 4){
-		console.log(answerHttp.responseText);
+		getPosts();		
 	}
 };
 
@@ -32,5 +32,6 @@ function sendAnswerToServer(event){
 	answerHttp.open("POST", "/comment");
 	answerHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	answerHttp.send("comment=" + commentText + "&postId=" + postId + "&time=" + time);
+	this.answerToPost.value = "";
 	event.preventDefault();
 }

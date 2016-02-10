@@ -375,7 +375,3 @@ exports.addComment = function(req, res){
 		res.send("" + false);
 	}
 }
-
-exports.getAnswersOnFly = function(req, res){
-	show.getAnswers(req, res);
-}
