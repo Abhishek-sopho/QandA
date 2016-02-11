@@ -47,6 +47,14 @@
 	textarea {
 		width: 90%;
 	}
+
+	input[type= "submit"]{
+		font-size: 0.7em;
+	}
+
+	input[type= "reset"]{
+		font-size: 0.7em;
+	}
 }
 
 @media (max-width: 350px){
@@ -90,5 +98,13 @@
 
 	.divProfilePic {
 		padding: 3px 5px;
+	}
+
+	input[type= "submit"]{
+		font-size: 0.5em;
+	}
+
+	input[type= "reset"]{
+		font-size: 0.5em;
 	}
 }

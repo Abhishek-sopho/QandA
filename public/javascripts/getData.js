@@ -100,7 +100,7 @@ function appendComments(res){
 				var comment = '<div class = "divAnswerContent">' + res[i].comments[j].commentPost +'</div>';
 				divAnswer.innerHTML = input + author + comment;
 				var parentToBeAppended = parent.getElementsByClassName("divAnswers")[0];
-				parentToBeAppended.getElementsByClassName("noAnswer").innerHTML = res[i].comments.length + " Answers/Comments Yet";
+				parentToBeAppended.getElementsByClassName("noAnswer")[0].innerHTML = res[i].comments.length + " Answers/Comments Yet";
 				parentToBeAppended.insertBefore(divAnswer, parentToBeAppended.getElementsByClassName("writeComment")[0]);
 			}
 		}
