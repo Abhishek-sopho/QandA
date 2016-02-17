@@ -1,6 +1,5 @@
 var express = require('express'),
 	http = require('http'),
-	path = require('path'),
 	route = require('./routes/route'),
 	bodyParser = require('body-parser'),
 	session = require('express-session');
@@ -77,6 +76,6 @@ app.get("*", function(req, res){
 
 server.listen(3000, function(){
 	console.log("-----------------------------------");
-	console.log("Serve listening to port 3000");
+	console.log("Server listening to port 3000");
 	console.log("-----------------------------------");
 });

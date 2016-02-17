@@ -7,7 +7,7 @@ exports.index = function(req, res){
 	if(req.session.user){
 		res.redirect("/home");
 	}
-	else{
+	else {
 		if(!req.session.content){
 			res.render("index", {"content": true, "form": req.session.form, "user": ""});
 			req.session.destroy();
@@ -19,6 +19,10 @@ exports.index = function(req, res){
 	}
 }
 
+// Here, I firstly hash the password and then search for the given username
+// If username already exists I send the message to the user, if not i.e., the
+// count is 0, I add the user to the db, set the session and redirect him/her 
+// to the home page!
 exports.signUp = function(req, res){
 	mongoClient.connect("mongodb://127.0.0.1:27017/testLogin", function(err, db){
 		if(err){
@@ -65,6 +69,11 @@ exports.signUp = function(req, res){
 	});
 }
 
+// I try to find the username in db, if count turns out to be zero the user
+// has yet not registered and so I send the error message otherwise I hash
+// the password and compare it to the password stored, if the result is true
+// I redirect the user to the home page after setting session otherwise
+// I redirect to the index page with error message
 exports.signIn = function(req, res){
 	mongoClient.connect("mongodb://127.0.0.1:27017/testLogin", function(err, db){
 		if(err){
@@ -121,6 +130,8 @@ exports.signIn = function(req, res){
 	});
 };
 
+// if session is set, redirect the show questions and answers to user
+// otherwise just redirect to index page!
 exports.home = function(req, res){
 	if(req.session.user){
 		show.showQues(req, res);
@@ -129,11 +140,15 @@ exports.home = function(req, res){
 		res.redirect("/");
 };
 
+// Destroy the session, logout the user and redirect him/her to index page
 exports.logOut = function(req, res){
 	req.session.destroy();
 	res.redirect("/");
 }
 
+// This is requested only by AJAX request to check if the username/email is
+// available or not. I just mongo for count of users with given email or 
+// username. If count is zero, I send true otherwise false
 exports.available = function(req, res){
 	mongoClient.connect("mongodb://127.0.0.1:27017/testLogin", function(err, db){
 		if(req.body.check == "email"){
