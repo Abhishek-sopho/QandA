@@ -54,7 +54,7 @@ function appendPost(res){
 			}
 
 			if(res[x].comments.length == 0){
-				var contentComment = '<div class = "divAnswers"><span class = "noAnswer"> No Answers/Comments Yet </span><';
+				var contentComment = '<div class = "divAnswers"><span class = "noAnswer"> No Answers/Comments Yet </span>';
 			}
 
 			var contentHidden = '<input type = "hidden" value = "' + res[x]._id + '" class = "' + res[x]._id + '">\n<input type = "hidden" value = "' + res[x].date + '">',

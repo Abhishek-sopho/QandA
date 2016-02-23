@@ -74,7 +74,7 @@ app.get("*", function(req, res){
 	res.send("<h1>404: Page not found</h1>");
 });
 
-server.listen(3000, function(){
+server.listen(process.env.PORT || 3000, function(){
 	console.log("-----------------------------------");
 	console.log("Server listening to port 3000");
 	console.log("-----------------------------------");
