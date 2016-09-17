@@ -7,7 +7,9 @@ var express = require('express'),
 var app = express();
 var server = http.createServer(app);
 
-app.set('port', process.env.PORT || 3000);
+var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080;
+var ip = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
+
 app.set('views', __dirname + "/views");
 app.set('view engine', 'ejs');
 app.use(bodyParser());
@@ -74,7 +76,7 @@ app.get("*", function(req, res){
 	res.send("<h1>404: Page not found</h1>");
 });
 
-server.listen(process.env.PORT || 3000, function(){
+server.listen(port, ip, function(){
 	console.log("-----------------------------------");
 	console.log("Server listening to port 3000");
 	console.log("-----------------------------------");
